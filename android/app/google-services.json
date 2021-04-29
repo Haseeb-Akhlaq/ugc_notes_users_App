@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "840639912929",
+    "project_id": "ugc-net-notes",
+    "storage_bucket": "ugc-net-notes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840639912929:android:2f1f2e32fc733649db10a0",
+        "android_client_info": {
+          "package_name": "com.wesdok.ugc_net_notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840639912929-mb3tg6j0crnica9eve9temafii0gc19c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvAcJAp8NhN9TwdDblCeSonpCXei4KGX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840639912929-mb3tg6j0crnica9eve9temafii0gc19c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
