@@ -27,6 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
         .collection('CoursesEnrolled')
         .get();
 
+    if (coursesEnrolled.docs.isEmpty) {
+      setState(() {
+        isLoading = false;
+      });
+      return;
+    }
+
     coursesEnrolled.docs.forEach((element) async {
       print(element.data());
 
@@ -157,6 +164,18 @@ class CourseCard extends StatefulWidget {
 }
 
 class _CourseCardState extends State<CourseCard> {
+  int getBarProgress() {
+    int unitsLeft = int.parse(widget.courseModel.numberOfUnitsLeft);
+    int totalUnits = int.parse(widget.courseModel.totalUnits);
+
+    if (totalUnits == 0) {
+      return 0;
+    }
+
+    int progress = (((totalUnits - unitsLeft) / totalUnits) * 100).toInt();
+    return progress;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -189,7 +208,9 @@ class _CourseCardState extends State<CourseCard> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => UnitsScreen(),
+                          builder: (context) => UnitsScreen(
+                            courseModel: widget.courseModel,
+                          ),
                         ),
                       );
                     },
@@ -286,12 +307,8 @@ class _CourseCardState extends State<CourseCard> {
                 height: 20,
               ),
               FAProgressBar(
-                currentValue:
-                    (int.parse(widget.courseModel.numberOfUnitsLeft) ~/
-                            int.parse(widget.courseModel.totalUnits == '0'
-                                ? '1'
-                                : widget.courseModel.totalUnits))
-                        .toInt(),
+                progressColor: Colors.amber,
+                currentValue: getBarProgress(),
                 displayText: '%',
               ),
             ],
