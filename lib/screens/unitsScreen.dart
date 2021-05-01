@@ -8,6 +8,8 @@ import 'package:ugc_net_notes/models/courseModel.dart';
 import 'package:ugc_net_notes/models/unitModel.dart';
 import 'package:ugc_net_notes/screens/paymentScreen.dart';
 import 'package:ugc_net_notes/screens/topicsScreen.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 class UnitsScreen extends StatefulWidget {
   final CourseModel courseModel;
@@ -31,6 +33,22 @@ class _UnitsScreenState extends State<UnitsScreen> {
         .doc(user.uid)
         .get();
 
+    final timeNow = DateTime.now();
+    final validityDate = DateTime.parse(userData.data()['memberShipValidTill']);
+
+    if (userData.data()['memberShipValidTill'] == '' ||
+        validityDate.isBefore(timeNow)) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .update({
+        'premiumUser': false,
+      });
+      setState(() {
+        isUserPremium = false;
+      });
+      return;
+    }
     setState(() {
       isUserPremium = userData.data()['premiumUser'];
     });
@@ -113,6 +131,14 @@ class _UnitsScreenState extends State<UnitsScreen> {
     return progressValue;
   }
 
+  launchWhatsApp() async {
+    final link = WhatsAppUnilink(
+      phoneNumber: '+92-331 5901231',
+      text: "Hey! I need help regarding UGC notes app",
+    );
+    await launch('$link');
+  }
+
   @override
   void initState() {
     checkUserPremium();
@@ -129,7 +155,7 @@ class _UnitsScreenState extends State<UnitsScreen> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.only(left: 10.0, right: 10, top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -156,49 +182,43 @@ class _UnitsScreenState extends State<UnitsScreen> {
               ),
             ),
             SizedBox(height: 20),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.7,
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(
-                  10,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 2,
-                    offset: Offset(0, 3), // changes position of shadow
+            Card(
+              elevation: 5,
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.7,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${widget.courseModel.totalTopics} Topics',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${widget.courseModel.totalTopics} Topics',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                    Text(
-                      '  /  ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                      Text(
+                        '  /  ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                    Text(
-                      '${widget.courseModel.totalCards} Cards',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                      Text(
+                        '${widget.courseModel.totalCards} Cards',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -347,7 +367,9 @@ class _UnitsScreenState extends State<UnitsScreen> {
               height: 10,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () async {
+                launchWhatsApp();
+              },
               child: Container(
                   width: 120,
                   color: Colors.white,
@@ -408,153 +430,150 @@ class _UnitTileState extends State<UnitTile> {
           widget.reset();
         }
       },
-      child: Container(
-        decoration: BoxDecoration(
-            color: AppColors.primary, border: Border.all(color: Colors.black)),
-        child: Padding(
-          padding: const EdgeInsets.all(7.0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        '${(widget.index + 1)} .',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                      Text(
-                        widget.unitModel.unitName,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        elevation: 5,
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(7.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          '${(widget.index + 1)} .',
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                      child: widget.unitModel.isUnitCompleted
-                          ? Container(
-                              color: Colors.white,
-                              child: Padding(
-                                padding: const EdgeInsets.all(2.0),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      width: 20,
-                                      child:
-                                          Image.asset('assets/greenTick.png'),
-                                    ),
-                                    Text(
-                                      'Completed',
-                                      style: TextStyle(fontSize: 8),
-                                    ),
-                                  ],
-                                ),
-                              ))
-                          : Icon(
-                              Icons.arrow_forward,
-                              color: AppColors.yellow,
-                              size: 28,
-                            ))
-                ],
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 30,
-                    width: MediaQuery.of(context).size.width * 0.7,
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(
-                        5,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 2,
-                          offset: Offset(0, 1), // changes position of shadow
+                        Text(
+                          widget.unitModel.unitName,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                          ),
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '${widget.unitModel.numberOfTopics} Topics',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            '  /  ',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            '${widget.unitModel.numberOfCards} Cards',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  if (widget.index == 0 && widget.userPremium == false)
                     Container(
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                      ),
-                      child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Free',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.white,
-                            ),
-                          )),
-                    ),
-                  if (widget.index > 0 && widget.userPremium == false)
-                    GestureDetector(
-                      onTap: () async {
-                        final result = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PaymentScreen(),
-                          ),
-                        );
-
-                        if (result == true) {
-                          widget.reset();
-                        }
-                      },
+                        child: widget.unitModel.isUnitCompleted
+                            ? Container(
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: 20,
+                                        child:
+                                            Image.asset('assets/greenTick.png'),
+                                      ),
+                                      Text(
+                                        'Completed',
+                                        style: TextStyle(fontSize: 8),
+                                      ),
+                                    ],
+                                  ),
+                                ))
+                            : Icon(
+                                Icons.arrow_forward,
+                                color: AppColors.primary,
+                                size: 28,
+                              ))
+                  ],
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Card(
+                      elevation: 4,
                       child: Container(
+                        height: 30,
+                        width: MediaQuery.of(context).size.width * 0.7,
                         decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.circular(
+                            5,
+                          ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(Icons.lock),
+                          padding: const EdgeInsets.all(5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${widget.unitModel.numberOfTopics} Topics',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                '  /  ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                '${widget.unitModel.numberOfCards} Cards',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    )
-                ],
-              ),
-            ],
+                    ),
+                    if (widget.index == 0 && widget.userPremium == false)
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                        ),
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Free',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            )),
+                      ),
+                    if (widget.index > 0 && widget.userPremium == false)
+                      GestureDetector(
+                        onTap: () async {
+                          final result = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PaymentScreen(),
+                            ),
+                          );
+
+                          if (result == true) {
+                            widget.reset();
+                          }
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(Icons.lock),
+                          ),
+                        ),
+                      )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -3,8 +3,9 @@ class AppUser {
   String userName;
   String email;
   String profilePic;
-  String numberOfCourseEnrolled;
+  int numberOfCourseEnrolled;
   bool premiumUser;
+  String memberShipValidTill;
 
   AppUser({
     this.userId,
@@ -13,6 +14,7 @@ class AppUser {
     this.numberOfCourseEnrolled,
     this.profilePic,
     this.premiumUser,
+    this.memberShipValidTill,
   });
 
   AppUser.fromMap(Map<dynamic, dynamic> map) {
@@ -22,5 +24,6 @@ class AppUser {
     this.profilePic = map['profilePic'];
     this.premiumUser = map['premiumUser'];
     this.numberOfCourseEnrolled = map['totalCoursesEnrolled'];
+    this.memberShipValidTill = map['memberShipValidTill'];
   }
 }

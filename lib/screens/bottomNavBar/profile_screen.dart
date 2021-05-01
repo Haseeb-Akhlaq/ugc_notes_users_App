@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:intl/intl.dart';
 import 'package:ugc_net_notes/constants/colors.dart';
 import 'package:ugc_net_notes/models/userModel.dart';
 
@@ -78,7 +80,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ProfileHeader(user: loggedUser),
-                        DonationsPart(user: loggedUser),
+                        InfoPart(user: loggedUser),
+                        PremiumUserPart(user: loggedUser)
                       ],
                     ),
                   ),
@@ -96,13 +99,8 @@ class LogoutButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         GoogleSignIn().signOut();
+        FacebookLogin().logOut();
         FirebaseAuth.instance.signOut();
-        // Navigator.pushAndRemoveUntil(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => AuthScreen(),
-        //     ),
-        //     (Route<dynamic> route) => false);
       },
       child: Container(
         alignment: Alignment.center,
@@ -124,9 +122,9 @@ class LogoutButton extends StatelessWidget {
   }
 }
 
-class DonationsPart extends StatelessWidget {
+class InfoPart extends StatelessWidget {
   final AppUser user;
-  const DonationsPart({this.user});
+  const InfoPart({this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +141,7 @@ class DonationsPart extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        user.numberOfCourseEnrolled ?? '',
+                        user.numberOfCourseEnrolled.toString() ?? '',
                         style: TextStyle(
                           fontSize: 42,
                         ),
@@ -158,40 +156,54 @@ class DonationsPart extends StatelessWidget {
                     ],
                   ),
                 ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PremiumUserPart extends StatelessWidget {
+  final AppUser user;
+  const PremiumUserPart({this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding:
+            const EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
                 Container(
                   child: Column(
                     children: [
                       Text(
-                        user.premiumUser.toString() ?? '',
+                        'Premium Membership Till:  ',
                         style: TextStyle(
-                          fontSize: 42,
-                        ),
-                      ),
-                      Text(
-                        'Premium User',
-                        style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 14,
                         ),
                         overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        user.memberShipValidTill == ''
+                            ? '0 Days'
+                            : DateFormat.yMMMMd().format(
+                                DateTime.parse(user.memberShipValidTill)),
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
-            // Container(
-            //   alignment: Alignment.center,
-            //   width: double.infinity,
-            //   height: 40,
-            //   decoration: BoxDecoration(
-            //     color: Color(0xffffcc00),
-            //     borderRadius: BorderRadius.circular(10),
-            //   ),
-            //   child: Text('Click To Share More'),
-            // )
           ],
         ),
       ),

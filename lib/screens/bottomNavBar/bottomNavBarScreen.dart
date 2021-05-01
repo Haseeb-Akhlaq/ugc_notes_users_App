@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ugc_net_notes/constants/colors.dart';
 import 'package:ugc_net_notes/screens/bottomNavBar/homeScreen.dart';
-import 'package:ugc_net_notes/screens/bottomNavBar/notificationsScreen.dart';
 import 'package:ugc_net_notes/screens/bottomNavBar/profile_screen.dart';
 import 'package:ugc_net_notes/screens/bottomNavBar/subjectsScreen.dart';
 import 'package:ugc_net_notes/screens/bottomNavBar/whatsAppScreen.dart';
@@ -59,11 +58,6 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
               label: 'Profile'),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.notifications,
-              ),
-              label: 'Notifications'),
-          BottomNavigationBarItem(
-              icon: Icon(
                 Icons.message,
               ),
               label: 'WhatsApp'),
@@ -81,7 +75,6 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
           HomeScreen(),
           SubjectsScreen(),
           ProfileScreen(),
-          NotificationsScreen(),
           WhatsAppScreen(),
         ],
       ),

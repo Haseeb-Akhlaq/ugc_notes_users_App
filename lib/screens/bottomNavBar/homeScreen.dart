@@ -21,60 +21,62 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isLoading = true;
     });
-    final coursesEnrolled = await FirebaseFirestore.instance
+    FirebaseFirestore.instance
         .collection('UserCoursesProgress')
         .doc(user.uid)
         .collection('CoursesEnrolled')
-        .get();
+        .snapshots()
+        .listen((event) {
+      if (event.docs.length == 0) {
+        setState(() {
+          isLoading = false;
+        });
+        return;
+      }
 
-    if (coursesEnrolled.docs.isEmpty) {
-      setState(() {
-        isLoading = false;
-      });
-      return;
-    }
+      event.docs.forEach((element) async {
+        allEnrolledCoursed = [];
 
-    coursesEnrolled.docs.forEach((element) async {
-      print(element.data());
+        final courseDetailsData = await FirebaseFirestore.instance
+            .collection('AllCourses')
+            .doc(element.data()['courseId'])
+            .get();
 
-      final courseDetailsData = await FirebaseFirestore.instance
-          .collection('AllCourses')
-          .doc(element.data()['courseId'])
-          .get();
+        final enrolledCourse = CourseModel();
 
-      final enrolledCourse = CourseModel();
+        enrolledCourse.coursePic = courseDetailsData.data()['coursePic'];
+        enrolledCourse.courseId = courseDetailsData.data()['courseId'];
+        enrolledCourse.courseName = courseDetailsData.data()['courseName'];
+        enrolledCourse.daysLeftToExams = courseDetailsData.data()['examIn'];
 
-      enrolledCourse.courseId = courseDetailsData.data()['courseId'];
-      enrolledCourse.courseName = courseDetailsData.data()['courseName'];
-      enrolledCourse.daysLeftToExams = courseDetailsData.data()['examIn'];
+        enrolledCourse.numberOfTopicsLeft =
+            (int.parse(courseDetailsData.data()['totalTopics']) -
+                    int.parse(element.data()['topicsDone']))
+                .toString();
 
-      enrolledCourse.numberOfTopicsLeft =
-          (int.parse(courseDetailsData.data()['totalTopics']) -
-                  int.parse(element.data()['topicsDone']))
-              .toString();
+        enrolledCourse.numberOfCardsLeft =
+            (int.parse(courseDetailsData.data()['totalCards']) -
+                    int.parse(element.data()['cardsDone']))
+                .toString();
 
-      enrolledCourse.numberOfCardsLeft =
-          (int.parse(courseDetailsData.data()['totalCards']) -
-                  int.parse(element.data()['cardsDone']))
-              .toString();
+        enrolledCourse.numberOfUnitsLeft =
+            (int.parse(courseDetailsData.data()['totalUnits']) -
+                    int.parse(element.data()['unitsDone']))
+                .toString();
 
-      enrolledCourse.numberOfUnitsLeft =
-          (int.parse(courseDetailsData.data()['totalUnits']) -
-                  int.parse(element.data()['unitsDone']))
-              .toString();
+        enrolledCourse.totalUnits = courseDetailsData.data()['totalUnits'];
+        enrolledCourse.totalTopics = courseDetailsData.data()['totalTopics'];
+        enrolledCourse.totalCards = courseDetailsData.data()['totalCards'];
 
-      enrolledCourse.totalUnits = courseDetailsData.data()['totalUnits'];
-      enrolledCourse.totalTopics = courseDetailsData.data()['totalTopics'];
-      enrolledCourse.totalCards = courseDetailsData.data()['totalCards'];
+        print(enrolledCourse.totalCards);
 
-      print(enrolledCourse.totalCards);
+        print(courseDetailsData.data());
 
-      print(courseDetailsData.data());
+        allEnrolledCoursed.add(enrolledCourse);
 
-      allEnrolledCoursed.add(enrolledCourse);
-
-      setState(() {
-        isLoading = false;
+        setState(() {
+          isLoading = false;
+        });
       });
     });
   }
@@ -105,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Container(
+                      width: double.infinity,
                       child: Column(
                         children: [
                           Text(
@@ -192,8 +195,7 @@ class _CourseCardState extends State<CourseCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://www.u-bordeaux.com/var/ezdemo_site/storage/images/media/working/international-masters/economic-affairs/364177-1-eng-GB/Economic-Affairs_Grande.jpg'),
+                    backgroundImage: NetworkImage(widget.courseModel.coursePic),
                   ),
                   Text('${widget.index + 1} .'),
                   Text(

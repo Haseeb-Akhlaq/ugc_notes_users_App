@@ -51,6 +51,9 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
       'unitsDone': '0'
     });
 
+    await FirebaseFirestore.instance.collection('users').doc(userId).update({
+      'totalCoursesEnrolled': FieldValue.increment(1),
+    });
     setState(() {
       isLoading = false;
     });
@@ -103,6 +106,13 @@ class CoursesSearch extends SearchDelegate<String> {
   List<CourseModel> results = [];
 
   Future<List> searchResults(String query) async {
+    if (query.isEmpty) {
+      final allResults =
+          await FirebaseFirestore.instance.collection('AllCourses').get();
+
+      return allResults.docs;
+    }
+
     final queryResultsByCode = await FirebaseFirestore.instance
         .collection('AllCourses')
         .where("courseId", isEqualTo: query)
@@ -173,7 +183,8 @@ class CoursesSearch extends SearchDelegate<String> {
                         padding: const EdgeInsets.all(8.0),
                         child: ListTile(
                           leading: CircleAvatar(
-                            backgroundImage: NetworkImage(''),
+                            backgroundImage:
+                                NetworkImage(results[index]['coursePic']),
                             radius: 20,
                           ),
                           title: Text(results[index]['courseName']),

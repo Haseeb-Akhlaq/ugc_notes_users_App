@@ -23,6 +23,9 @@ class _CardsScreenState extends State<CardsScreen> {
   List<CardModel> finalCards = [];
   int cardsDone = -1;
 
+  bool isDarkMode = false;
+  double fontSize = 0;
+
   updateCardsDone(bool value) {
     if (value) {
       setState(() {
@@ -74,10 +77,15 @@ class _CardsScreenState extends State<CardsScreen> {
 
       final card = CardModel();
 
-      card.courseId = widget.topicModel.courseId;
-      card.cardContent = element.data()['cardContent'];
       card.unitId = widget.topicModel.unitId;
       card.topicId = widget.topicModel.topicId;
+      card.courseId = widget.topicModel.courseId;
+      card.cardHeading1 = element.data()['cardHeading1'];
+      card.cardContent1 = element.data()['cardContent1'];
+      card.cardHeading2 = element.data()['cardHeading2'];
+      card.cardContent2 = element.data()['cardContent2'];
+      card.cardPic = element.data()['imageUrl'];
+
       card.cardId = element.data()['cardId'];
 
       if (!cardStatus.exists) {
@@ -147,6 +155,7 @@ class _CardsScreenState extends State<CardsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
         title: Text(widget.topicModel.topicName),
         centerTitle: true,
@@ -161,6 +170,63 @@ class _CardsScreenState extends State<CardsScreen> {
                   ? (cardsDone / (finalCards.length) * 100).toInt()
                   : 0,
               progressColor: Colors.amber,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      '        Dark Mode',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                    ),
+                    Switch(
+                        activeColor: Colors.white,
+                        inactiveThumbColor: Colors.black,
+                        activeThumbImage: AssetImage('assets/greenTick.png'),
+                        value: isDarkMode,
+                        onChanged: (v) {
+                          setState(() {
+                            isDarkMode = v;
+                            print(isDarkMode);
+                          });
+                        }),
+                  ],
+                ),
+                SizedBox(
+                  width: 40,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '        Select Font Size',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                    ),
+                    Slider(
+                        value: fontSize,
+                        min: 0,
+                        max: 10,
+                        divisions: 10,
+                        label: '$fontSize',
+                        activeColor: isDarkMode ? Colors.white : Colors.black,
+                        inactiveColor: isDarkMode ? Colors.white : Colors.black,
+                        onChanged: (v) {
+                          setState(() {
+                            fontSize = v;
+                          });
+                        }),
+                  ],
+                )
+              ],
             ),
             SizedBox(
               height: 20,
@@ -184,6 +250,8 @@ class _CardsScreenState extends State<CardsScreen> {
                             index: index,
                             totalCards: finalCards.length,
                             cardsDone: updateCardsDone,
+                            isDarkMode: isDarkMode,
+                            fontSize: fontSize,
                           );
                         }),
                   ),
@@ -221,8 +289,17 @@ class CardTile extends StatefulWidget {
   final int index;
   final int totalCards;
   final Function cardsDone;
+  final bool isDarkMode;
+  final double fontSize;
 
-  const CardTile({this.cardModel, this.index, this.totalCards, this.cardsDone});
+  const CardTile({
+    this.cardModel,
+    this.index,
+    this.totalCards,
+    this.cardsDone,
+    this.isDarkMode,
+    this.fontSize,
+  });
   @override
   _CardTileState createState() => _CardTileState();
 }
@@ -277,75 +354,134 @@ class _CardTileState extends State<CardTile> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.primary),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 3,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      height: 200,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10.0, left: 10, right: 10),
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.centerRight,
-              width: double.infinity,
-              child: Text('${widget.index + 1} / ${widget.totalCards}'),
-            ),
-            Expanded(
-              child: ListView(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      widget.cardModel.cardContent,
-                      style: TextStyle(fontSize: 18),
+    return Card(
+      shadowColor: widget.isDarkMode ? Colors.white : Colors.black,
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Container(
+        decoration: BoxDecoration(
+          color: widget.isDarkMode ? Colors.grey[900] : Colors.grey[100],
+          borderRadius: BorderRadius.circular(20),
+        ),
+        height: 380,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10.0, left: 10, right: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                alignment: Alignment.centerRight,
+                width: double.infinity,
+                child: Text(
+                  '${widget.index + 1} / ${widget.totalCards}',
+                  style: TextStyle(
+                    color: widget.isDarkMode ? Colors.white : Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView(
+                    children: [
+                      if (widget.cardModel.cardPic != '')
+                        Container(
+                          width: double.infinity,
+                          child: Container(
+                            height: 100,
+                            child: Image.network(widget.cardModel.cardPic),
+                          ),
+                        ),
+                      if (widget.cardModel.cardPic != '')
+                        SizedBox(
+                          height: 15,
+                        ),
+                      Text(
+                        widget.cardModel.cardHeading1,
+                        style: TextStyle(
+                          fontSize: 18 + widget.fontSize,
+                          color:
+                              widget.isDarkMode ? Colors.white : Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        widget.cardModel.cardContent1,
+                        style: TextStyle(
+                          fontSize: 15 + widget.fontSize,
+                          color:
+                              widget.isDarkMode ? Colors.white : Colors.black,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        widget.cardModel.cardHeading2,
+                        style: TextStyle(
+                          fontSize: 18 + widget.fontSize,
+                          color:
+                              widget.isDarkMode ? Colors.white : Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        widget.cardModel.cardContent2,
+                        style: TextStyle(
+                          fontSize: 15 + widget.fontSize,
+                          color:
+                              widget.isDarkMode ? Colors.white : Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Text(
+                      'Done This Cards',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: widget.isDarkMode ? Colors.white : Colors.white,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              alignment: Alignment.centerRight,
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Text(
-                    'Done This Cards',
-                    style: TextStyle(fontSize: 10),
-                  ),
-                  Checkbox(
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    value: widget.cardModel.isDone,
-                    onChanged: (v) {
-                      setState(() {
-                        widget.cardsDone(v);
-                        widget.cardModel.isDone = v;
-                      });
+                    Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      value: widget.cardModel.isDone,
+                      onChanged: (v) {
+                        setState(() {
+                          widget.cardsDone(v);
+                          widget.cardModel.isDone = v;
+                        });
 
-                      updateCardStatus(v);
+                        updateCardStatus(v);
 
-                      if (v == true) {
-                        incrementCardsDone();
-                      }
-                      if (v == false) {
-                        decrementCardsDone();
-                      }
-                    },
-                  ),
-                ],
-              ),
-            )
-          ],
+                        if (v == true) {
+                          incrementCardsDone();
+                        }
+                        if (v == false) {
+                          decrementCardsDone();
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -8,6 +8,7 @@ class CourseModel {
   String totalUnits;
   String totalTopics;
   String totalCards;
+  String coursePic;
 
   CourseModel(
       {this.courseId,
@@ -18,7 +19,8 @@ class CourseModel {
       this.numberOfUnitsLeft,
       this.totalCards,
       this.totalTopics,
-      this.totalUnits});
+      this.totalUnits,
+      this.coursePic});
 
   CourseModel.fromMap(Map<dynamic, dynamic> map) {
     this.courseId = map['courseId'];

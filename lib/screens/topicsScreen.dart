@@ -146,36 +146,31 @@ class _TopicsScreenState extends State<TopicsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width * 0.5,
-              decoration: BoxDecoration(
-                color: Colors.deepOrangeAccent,
-                borderRadius: BorderRadius.circular(
-                  5,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                    offset: Offset(0, 3), // changes position of shadow
+            Card(
+              elevation: 5,
+              child: Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width * 0.5,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                    5,
                   ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'TOPICS',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'TOPICS',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -185,50 +180,45 @@ class _TopicsScreenState extends State<TopicsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 30,
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(
-                      5,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
-                        spreadRadius: 1,
-                        blurRadius: 2,
-                        offset: Offset(0, 1), // changes position of shadow
+                Card(
+                  elevation: 5,
+                  child: Container(
+                    height: 30,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(
+                        5,
                       ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '${widget.unitModel.numberOfTopics} Topics',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '${widget.unitModel.numberOfTopics} Topics',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '  /  ',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                          Text(
+                            '  /  ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '${widget.unitModel.numberOfCards} Cards',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                          Text(
+                            '${widget.unitModel.numberOfCards} Cards',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -328,103 +318,107 @@ class _TopicTileState extends State<TopicTile> {
           widget.resetScreen();
         }
       },
-      child: Container(
-        decoration: BoxDecoration(
+      child: Card(
+        elevation: 5,
+        child: Container(
+          decoration: BoxDecoration(
             color: widget.topicModel.isTopicCompleted
-                ? Color(0xffFBB782).withOpacity(0.7)
-                : Color(0xffFBB782),
-            border: Border.all(color: Color(0xffFA9A50))),
-        child: Padding(
-          padding: const EdgeInsets.all(7.0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+                ? Colors.grey[100].withOpacity(0.7)
+                : Colors.grey[100],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(7.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          '${(widget.index + 1)} .',
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                        Text(
+                          widget.topicModel.topicName,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      child: widget.topicModel.isTopicCompleted
+                          ? Container(
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: 20,
+                                      child:
+                                          Image.asset('assets/greenTick.png'),
+                                    ),
+                                    Text(
+                                      'Completed',
+                                      style: TextStyle(fontSize: 8),
+                                    ),
+                                  ],
+                                ),
+                              ))
+                          : Icon(
+                              Icons.arrow_forward,
+                              color: AppColors.primary,
+                              size: 28,
+                            ),
+                    )
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: Row(
                     children: [
-                      Text(
-                        '${(widget.index + 1)} .',
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                      Text(
-                        widget.topicModel.topicName,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${widget.topicModel.numberOfCards}  Cards',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              '  /  ',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                            Text(
+                              widget.topicModel.isTopicCompleted
+                                  ? 'Re Read'
+                                  : 'Read',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                  Container(
-                    child: widget.topicModel.isTopicCompleted
-                        ? Container(
-                            color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: 20,
-                                    child: Image.asset('assets/greenTick.png'),
-                                  ),
-                                  Text(
-                                    'Completed',
-                                    style: TextStyle(fontSize: 8),
-                                  ),
-                                ],
-                              ),
-                            ))
-                        : Icon(
-                            Icons.arrow_forward,
-                            color: AppColors.primary,
-                            size: 28,
-                          ),
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '${widget.topicModel.numberOfCards}  Cards',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontStyle: FontStyle.italic,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            '  /  ',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontStyle: FontStyle.italic,
-                            ),
-                          ),
-                          Text(
-                            widget.topicModel.isTopicCompleted
-                                ? 'Re Read'
-                                : 'Read',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontStyle: FontStyle.italic,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

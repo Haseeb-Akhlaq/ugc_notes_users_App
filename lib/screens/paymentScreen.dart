@@ -12,13 +12,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
   bool isLoading = false;
   final user = FirebaseAuth.instance.currentUser;
 
-  Future updateFirebaseUserData() async {
+  String oneMonthPrice = '';
+  String threeMonthPrice = '';
+  String sixMonthPrice = '';
+  String oneYearPrice = '';
+
+  Future updateFirebaseUserData(int days) async {
     await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
       'premiumUser': true,
+      'memberShipValidTill':
+          (DateTime.now().add(Duration(days: days))).toString()
     });
   }
 
-  sendPayements() async {
+  sendPayements({double price, int days}) async {
     setState(() {
       isLoading = true;
     });
@@ -32,14 +39,35 @@ class _PaymentScreenState extends State<PaymentScreen> {
       isLoading = false;
     });
     if (response.success) {
-      await updateFirebaseUserData();
+      await updateFirebaseUserData(days);
       Navigator.of(context).pop(true);
     }
+  }
+
+  fetchSubscriptionPrices() async {
+    setState(() {
+      isLoading = true;
+    });
+    final prices = await FirebaseFirestore.instance
+        .collection('SubscriptionPrices')
+        .doc('11221122')
+        .get();
+
+    print(prices.data()['1 Month']);
+
+    setState(() {
+      oneMonthPrice = prices.data()['1 Month'];
+      threeMonthPrice = prices.data()['3 Months'];
+      sixMonthPrice = prices.data()['6 Months'];
+      oneYearPrice = prices.data()['1 Year'];
+      isLoading = false;
+    });
   }
 
   @override
   void initState() {
     StripeService.init();
+    fetchSubscriptionPrices();
     super.initState();
   }
 
@@ -68,17 +96,70 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      sendPayements();
+                      sendPayements(
+                          price: double.parse(oneMonthPrice), days: 30);
                     },
                     child: Card(
                       child: Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            '3-Months Rs 99',
-                            style: TextStyle(
-                              fontSize: 28,
-                            ),
+                          child: Column(
+                            children: [
+                              Text(
+                                oneMonthPrice,
+                                style: TextStyle(
+                                  fontSize: 38,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'For 1-Month ',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      sendPayements(
+                          price: double.parse(threeMonthPrice), days: 90);
+                    },
+                    child: Card(
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                threeMonthPrice,
+                                style: TextStyle(
+                                  fontSize: 38,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'For 3-Months ',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -89,17 +170,33 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      sendPayements();
+                      sendPayements(
+                          price: double.parse(sixMonthPrice), days: 180);
                     },
                     child: Card(
                       child: Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            '6-Months Rs 199',
-                            style: TextStyle(
-                              fontSize: 28,
-                            ),
+                          child: Column(
+                            children: [
+                              Text(
+                                sixMonthPrice,
+                                style: TextStyle(
+                                  fontSize: 38,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'For 6-Months ',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -110,17 +207,33 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      sendPayements();
+                      sendPayements(
+                          price: double.parse(oneYearPrice), days: 365);
                     },
                     child: Card(
                       child: Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            '1-Year Rs 299',
-                            style: TextStyle(
-                              fontSize: 28,
-                            ),
+                          child: Column(
+                            children: [
+                              Text(
+                                oneYearPrice,
+                                style: TextStyle(
+                                  fontSize: 38,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'For 1-Year ',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

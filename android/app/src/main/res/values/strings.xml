@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UGC Notes</string>
+    <string name="facebook_app_id">1112997772439113</string>
+    <string name="fb_login_protocol_scheme">fb1112997772439113</string>
+
+</resources>
