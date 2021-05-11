@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:ugc_net_notes/constants/colors.dart';
 import 'package:ugc_net_notes/models/userModel.dart';
+import 'package:ugc_net_notes/widgets/drawer.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -60,6 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: ScreenDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: Text('Profile'),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -93,6 +94,14 @@ class GoogleButton extends StatefulWidget {
 }
 
 class _GoogleButtonState extends State<GoogleButton> {
+  DateTime particularTime(DateTime datefornoti, String timeInHours) {
+    String todayDate = datefornoti.toString();
+    String date = todayDate.split(' ')[0];
+    date = '$date $timeInHours';
+    final finalDate = DateTime.parse(date);
+    return finalDate;
+  }
+
   signInWithGoogle() async {
     GoogleSignIn googleSignIn = GoogleSignIn();
     GoogleSignInAccount googleAccount = await googleSignIn.signIn();
@@ -117,6 +126,10 @@ class _GoogleButtonState extends State<GoogleButton> {
         if (user.exists) {
           return;
         } else {
+          SharedPreferences pref = await SharedPreferences.getInstance();
+          pref.setInt('notificationNumber', 1);
+          pref.setInt('questionNumber', 1);
+
           final result = await FirebaseFirestore.instance
               .collection('users')
               .doc(userId)
@@ -125,7 +138,9 @@ class _GoogleButtonState extends State<GoogleButton> {
             'email': authResult.user.email,
             'userId': authResult.user.uid,
             'profilePic': authResult.user.photoURL,
-            'totalCoursesEnrolled': '0',
+            'totalCoursesEnrolled': 0,
+            'joinedOn':
+                particularTime(DateTime.now(), '00:01:00.00').toString(),
             'premiumUser': false,
             'memberShipValidTill': '',
           });
@@ -151,43 +166,41 @@ class _GoogleButtonState extends State<GoogleButton> {
         try {
           await signInWithGoogle();
         } catch (e) {
+          print('wef');
+          print(e);
           widget.showErr();
         }
       },
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.8,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.topRight,
-                colors: [
-                  Colors.red.shade400,
-                  Colors.blue.shade500,
-                  Colors.green.shade100
-                ]),
-            borderRadius: BorderRadius.circular(25)),
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 35,
-                width: 35,
-                child: Image.asset('assets/googlelogo.png'),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Text(
-                'Proceed with Google',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.8,
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(25)),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 35,
+                  width: 35,
+                  child: Image.asset('assets/googlelogo.png'),
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  'Proceed with Google',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -199,6 +212,14 @@ class FacebookButton extends StatelessWidget {
   final Function showErr;
 
   const FacebookButton({this.showErr});
+
+  DateTime particularTime(DateTime datefornoti, String timeInHours) {
+    String todayDate = datefornoti.toString();
+    String date = todayDate.split(' ')[0];
+    date = '$date $timeInHours';
+    final finalDate = DateTime.parse(date);
+    return finalDate;
+  }
 
   signInWithFacebook() async {
     final facebookLogin = FacebookLogin();
@@ -234,6 +255,7 @@ class FacebookButton extends StatelessWidget {
           'email': authResult.user.email,
           'userId': authResult.user.uid,
           'profilePic': authResult.user.photoURL,
+          'joinedOn': particularTime(DateTime.now(), '00:01:00.00').toString(),
           'totalCoursesEnrolled': 0,
           'premiumUser': false,
           'memberShipValidTill': ''
@@ -254,28 +276,34 @@ class FacebookButton extends StatelessWidget {
         try {
           await signInWithFacebook();
         } catch (e) {
+          print('wef');
+          print(e);
           showErr();
         }
       },
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.8,
-        decoration: BoxDecoration(
-            color: Colors.blue, borderRadius: BorderRadius.circular(25)),
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 40,
-                width: 40,
-                child: Image.asset('assets/facebooklogo.png'),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Text('Sign Up with facebook')
-            ],
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.8,
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(25)),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 40,
+                  width: 40,
+                  child: Image.asset('assets/facebooklogo.png'),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text('Sign Up with facebook')
+              ],
+            ),
           ),
         ),
       ),

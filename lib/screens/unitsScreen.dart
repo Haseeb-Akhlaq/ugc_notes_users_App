@@ -34,7 +34,9 @@ class _UnitsScreenState extends State<UnitsScreen> {
         .get();
 
     final timeNow = DateTime.now();
-    final validityDate = DateTime.parse(userData.data()['memberShipValidTill']);
+    final validityDate = userData.data()['memberShipValidTill'] == ""
+        ? DateTime.now().subtract(Duration(days: 3))
+        : DateTime.parse(userData.data()['memberShipValidTill']);
 
     if (userData.data()['memberShipValidTill'] == '' ||
         validityDate.isBefore(timeNow)) {
@@ -43,6 +45,7 @@ class _UnitsScreenState extends State<UnitsScreen> {
           .doc(user.uid)
           .update({
         'premiumUser': false,
+        'memberShipValidTill': '',
       });
       setState(() {
         isUserPremium = false;
@@ -133,7 +136,7 @@ class _UnitsScreenState extends State<UnitsScreen> {
 
   launchWhatsApp() async {
     final link = WhatsAppUnilink(
-      phoneNumber: '+92-331 5901231',
+      phoneNumber: '+91-6303 314 013',
       text: "Hey! I need help regarding UGC notes app",
     );
     await launch('$link');
@@ -159,152 +162,6 @@ class _UnitsScreenState extends State<UnitsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 30,
-                    child: Image.network(
-                        'https://www.u-bordeaux.com/var/ezdemo_site/storage/images/media/working/international-masters/economic-affairs/364177-1-eng-GB/Economic-Affairs_Grande.jpg'),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    widget.courseModel.courseName,
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Card(
-              elevation: 5,
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.7,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '${widget.courseModel.totalTopics} Topics',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                        ),
-                      ),
-                      Text(
-                        '  /  ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                        ),
-                      ),
-                      Text(
-                        '${widget.courseModel.totalCards} Cards',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              height: 150,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    width: 150,
-                    child: Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                widget.courseModel.daysLeftToExams,
-                                style: TextStyle(fontSize: 25),
-                              ),
-                              Text('Day left To Exams')
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 15),
-                  Container(
-                    width: 150,
-                    child: Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                widget.courseModel.numberOfTopicsLeft,
-                                style: TextStyle(fontSize: 25),
-                              ),
-                              Text('Topics Left')
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 15),
-                  Container(
-                    width: 150,
-                    child: Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                widget.courseModel.numberOfCardsLeft,
-                                style: TextStyle(fontSize: 25),
-                              ),
-                              Text('Cards left')
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
             isLoading
                 ? Center(
                     child: SpinKitChasingDots(
@@ -312,53 +169,249 @@ class _UnitsScreenState extends State<UnitsScreen> {
                     ),
                   )
                 : Expanded(
-                    child: ListView.separated(
-                      separatorBuilder: (context, index) {
-                        if (index == 0 && isUserPremium == false) {
-                          return GestureDetector(
-                            onTap: () async {
-                              final result = await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => PaymentScreen(),
+                    child: Scrollbar(
+                      isAlwaysShown: true,
+                      showTrackOnHover: true,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) {
+                            if (index == 0 && isUserPremium == false) {
+                              return GestureDetector(
+                                onTap: () async {
+                                  final result = await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PaymentScreen(),
+                                    ),
+                                  );
+
+                                  if (result == true) {
+                                    resetScreen();
+                                  }
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.symmetric(vertical: 10),
+                                  padding: EdgeInsets.all(10),
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: Color(0xffFBB782)),
+                                    color: Color(0xffFBB782).withOpacity(0.7),
+                                  ),
+                                  child: Text(
+                                    'Click here & unlock all units Notes ',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
                                 ),
                               );
-
-                              if (result == true) {
-                                resetScreen();
-                              }
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.symmetric(vertical: 10),
-                              padding: EdgeInsets.all(10),
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Color(0xffFBB782)),
-                                color: Color(0xffFBB782).withOpacity(0.7),
-                              ),
-                              child: Text(
-                                'Click here & unlock all units Notes ',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ),
-                          );
-                        }
-                        return SizedBox(height: 10);
-                      },
-                      itemCount: finalUnits.length,
-                      itemBuilder: (context, index) {
-                        return UnitTile(
-                          unitModel: finalUnits.firstWhere((element) =>
-                              int.parse(element.unitId) == index + 1),
-                          index: index,
-                          reset: resetScreen,
-                          userPremium: isUserPremium,
-                        );
-                      },
+                            }
+                            return SizedBox(height: 10);
+                          },
+                          itemCount: finalUnits.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                if (index == 0)
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 4,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Row(children: [
+                                                Container(
+                                                  height: 40,
+                                                  child: Image.network(widget
+                                                      .courseModel.coursePic),
+                                                ),
+                                                SizedBox(width: 10),
+                                                Flexible(
+                                                  child: Text(
+                                                    widget
+                                                        .courseModel.courseName,
+                                                    style: TextStyle(
+                                                      fontSize: 14,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ]),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Card(
+                                        elevation: 5,
+                                        child: Container(
+                                          height: 60,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.3,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              10,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  '${widget.courseModel.totalTopics} Topics',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '${widget.courseModel.totalCards} Cards',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                if (index == 0)
+                                  if (index == 0) SizedBox(height: 10),
+                                if (index == 0)
+                                  Container(
+                                    height: 100,
+                                    child: ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      children: [
+                                        Container(
+                                          width: 100,
+                                          child: Card(
+                                            elevation: 4,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15)),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      widget.courseModel
+                                                          .daysLeftToExams,
+                                                      style: TextStyle(
+                                                          fontSize: 25),
+                                                    ),
+                                                    Text(
+                                                      'Day left To Exams',
+                                                      style: TextStyle(
+                                                          fontSize: 8),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 15),
+                                        Container(
+                                          width: 100,
+                                          child: Card(
+                                            elevation: 4,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15)),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
+                                              child: Container(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      widget.courseModel
+                                                          .numberOfTopicsLeft,
+                                                      style: TextStyle(
+                                                          fontSize: 25),
+                                                    ),
+                                                    Text('Topics Left',
+                                                        style: TextStyle(
+                                                            fontSize: 8))
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 15),
+                                        Container(
+                                          width: 100,
+                                          child: Card(
+                                            elevation: 4,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15)),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
+                                              child: Container(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      widget.courseModel
+                                                          .numberOfCardsLeft,
+                                                      style: TextStyle(
+                                                          fontSize: 25),
+                                                    ),
+                                                    Text('Cards left',
+                                                        style: TextStyle(
+                                                            fontSize: 8))
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                SizedBox(height: 15),
+                                UnitTile(
+                                  unitModel: finalUnits.firstWhere((element) =>
+                                      int.parse(element.unitId) == index + 1),
+                                  index: index,
+                                  reset: resetScreen,
+                                  userPremium: isUserPremium,
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
                     ),
                   ),
             FAProgressBar(
+              displayTextStyle: TextStyle(
+                color: Colors.black,
+              ),
               progressColor: Colors.amber,
               currentValue: getProgressBarValue(),
               displayText: '%',
@@ -371,16 +424,17 @@ class _UnitsScreenState extends State<UnitsScreen> {
                 launchWhatsApp();
               },
               child: Container(
-                  width: 120,
+                  width: 150,
                   color: Colors.white,
                   child: Card(
                     elevation: 5,
                     child: Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            'Need Help ?  ',
+                            'Need Help ?',
                             style: TextStyle(fontSize: 12),
                           ),
                           Container(
@@ -438,50 +492,44 @@ class _UnitTileState extends State<UnitTile> {
             padding: const EdgeInsets.all(7.0),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          '${(widget.index + 1)} .',
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        ),
-                        Text(
-                          widget.unitModel.unitName,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
+                ListTile(
+                  leading: Text(
+                    '${(widget.index + 1)} .',
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
+                  title: Text(
+                    widget.unitModel.unitName,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
                     ),
-                    Container(
-                        child: widget.unitModel.isUnitCompleted
-                            ? Container(
-                                color: Colors.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(2.0),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: 20,
-                                        child:
-                                            Image.asset('assets/greenTick.png'),
-                                      ),
-                                      Text(
-                                        'Completed',
-                                        style: TextStyle(fontSize: 8),
-                                      ),
-                                    ],
-                                  ),
-                                ))
-                            : Icon(
-                                Icons.arrow_forward,
-                                color: AppColors.primary,
-                                size: 28,
+                  ),
+                  trailing: Container(
+                      child: widget.unitModel.isUnitCompleted
+                          ? Container(
+                              margin: EdgeInsets.only(top: 10),
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: 20,
+                                      child:
+                                          Image.asset('assets/greenTick.png'),
+                                    ),
+                                    Text(
+                                      'Completed',
+                                      style: TextStyle(fontSize: 8),
+                                    ),
+                                  ],
+                                ),
                               ))
-                  ],
+                          : Icon(
+                              Icons.arrow_forward,
+                              color: AppColors.primary,
+                              size: 28,
+                            )),
                 ),
                 SizedBox(
                   height: 15,
@@ -493,7 +541,7 @@ class _UnitTileState extends State<UnitTile> {
                       elevation: 4,
                       child: Container(
                         height: 30,
-                        width: MediaQuery.of(context).size.width * 0.7,
+                        width: MediaQuery.of(context).size.width * 0.6,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(
@@ -532,19 +580,19 @@ class _UnitTileState extends State<UnitTile> {
                       ),
                     ),
                     if (widget.index == 0 && widget.userPremium == false)
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.green,
+                      Card(
+                        elevation: 5,
+                        child: Container(
+                          child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Text(
+                                'Free',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                              )),
                         ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Free',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
-                              ),
-                            )),
                       ),
                     if (widget.index > 0 && widget.userPremium == false)
                       GestureDetector(

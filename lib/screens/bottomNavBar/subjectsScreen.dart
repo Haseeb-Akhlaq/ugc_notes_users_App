@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ugc_net_notes/constants/colors.dart';
 import 'package:ugc_net_notes/models/courseModel.dart';
+import 'package:ugc_net_notes/widgets/drawer.dart';
 
 class SubjectsScreen extends StatefulWidget {
   @override
@@ -69,9 +70,16 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
     );
   }
 
+  getAllCourses() async {
+    final allResults =
+        await FirebaseFirestore.instance.collection('AllCourses').get();
+    return allResults.docs;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: ScreenDrawer(),
       appBar: AppBar(
         title: Text('Search Courses'),
         centerTitle: true,
@@ -90,11 +98,68 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
           ),
         ],
       ),
-      body: isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : Container(),
+      body: FutureBuilder(
+          future: getAllCourses(),
+          builder: (context, futureSnapshot) {
+            if (futureSnapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            final results = futureSnapshot.data;
+
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                  itemCount: results.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {},
+                      child: Card(
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            leading: Container(
+                              width: 70,
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                        results[index]['coursePic']),
+                                    radius: 20,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text('${results[index]['courseCode']}:'),
+                                ],
+                              ),
+                            ),
+                            title: Text(results[index]['courseName']),
+                            trailing: GestureDetector(
+                              onTap: () {
+                                enrollCourse(results[index]['courseId']);
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: AppColors.yellow,
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    'Click To Enroll',
+                                    style: TextStyle(fontSize: 10),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+            );
+          }),
     );
   }
 }
@@ -115,7 +180,7 @@ class CoursesSearch extends SearchDelegate<String> {
 
     final queryResultsByCode = await FirebaseFirestore.instance
         .collection('AllCourses')
-        .where("courseId", isEqualTo: query)
+        .where("courseCode", isEqualTo: query)
         .get();
 
     final queryResultsByName = await FirebaseFirestore.instance
@@ -182,10 +247,20 @@ class CoursesSearch extends SearchDelegate<String> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(results[index]['coursePic']),
-                            radius: 20,
+                          minLeadingWidth: 0,
+                          leading: Container(
+                            width: 80,
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage:
+                                      NetworkImage(results[index]['coursePic']),
+                                  radius: 20,
+                                ),
+                                SizedBox(width: 20),
+                                Text('${results[index]['courseCode']}:'),
+                              ],
+                            ),
                           ),
                           title: Text(results[index]['courseName']),
                           trailing: GestureDetector(
@@ -198,10 +273,10 @@ class CoursesSearch extends SearchDelegate<String> {
                                   color: AppColors.yellow,
                                   borderRadius: BorderRadius.circular(10)),
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(5.0),
                                 child: Text(
                                   'Click To Enroll',
-                                  style: TextStyle(fontSize: 12),
+                                  style: TextStyle(fontSize: 10),
                                 ),
                               ),
                             ),

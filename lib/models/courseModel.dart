@@ -1,5 +1,6 @@
 class CourseModel {
   String courseId;
+  String courseCode;
   String courseName;
   String numberOfUnitsLeft;
   String numberOfTopicsLeft;
@@ -12,6 +13,7 @@ class CourseModel {
 
   CourseModel(
       {this.courseId,
+      this.courseCode,
       this.courseName,
       this.daysLeftToExams,
       this.numberOfCardsLeft,
@@ -24,6 +26,7 @@ class CourseModel {
 
   CourseModel.fromMap(Map<dynamic, dynamic> map) {
     this.courseId = map['courseId'];
+    this.courseCode = map['courseCode'];
     this.courseName = map['unitName'] ?? '';
     this.daysLeftToExams = map['daysLeftToExams'] ?? '';
     this.numberOfCardsLeft =

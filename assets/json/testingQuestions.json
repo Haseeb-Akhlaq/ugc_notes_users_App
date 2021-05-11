@@ -1,0 +1,1127 @@
+{
+  "1": {
+    "Q": "The performance parameters of a logic family are required for better understanding. The the following statements explain the characteristics of the Digital logic family.<br> Which of these statements are correct?<br> (A) The operating speed of a logic family is determined from its propagation delay<br> (B) Power dissipation is inversely proportional to switching frequency and directly proportional to cycle time<br> (C) Fan-in is defined as maximum number of inputs for a logic gate in a particular logic family<br> (D) Fan-out is defined as number of dissimilar logic gates driven by a sinele logic gate<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (B) only ",
+      "(B) (A) and (C) only ",
+      "(C) (A) and (D) only ",
+      "(D) (B) and (C) only "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "2": {
+    "Q": "In case of the parallel adder, the speed with which an addition can be performed is governed by the time required for the carries to propagate or ripple through all the stages of the adder.<br> Which of the following statements are correct?<br> (A) The method of speeding up the addition process is based on additional functions of full-adder called carry generate and carry propagation<br> (B) The look-ahead-carry adder speeds up the process by eliminating mpple carry delay.<br> (C) The final sum output of the $n^{th}$ stage is given by $S_n=P_n ⊕C_n$, where $P_n=A_n⊕B_n$<br> (D) The final carry output of $n^{th}$ stage is given by $C_{n+1}=G_n+P_n$ where $G_n= A_n.B_n$<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (B) only ",
+      "(B) (A) and (C) only ",
+      "(C) (A), (B) and (C) only ",
+      "(D) (B), (C) and (D) only "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "3": {
+    "Q": "For the 40-character wide LCD. the upper address range can go as high as:<br> (A) 0101011<br> (B) 1000000<br> (C) 0100111<br> (D) 1001000<br> (E) 1011111<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (C) only ",
+      "(B) (A) only ",
+      "(C) (D) only ",
+      "(D) (B) and (E) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "4": {
+    "Q": "Keyboards are organised in a matrix. The CPU of 8051 accesses both rows and columns through its ports. So. it can access<br> (A) 4 x 4 matrix of keys<br> (B) 8 x 8 matrix of keys<br> (C) 16 x 16 matrix of keys<br> (D) 2 x 2 matrix of keys<br> (E) 32 x 32 matrix of keys<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (B) only ",
+      "(B) (A) only ",
+      "(C) (C) only ",
+      "(D) (D) and (E) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "5": {
+    "Q": "For an EM wave ray traversing from air, medium 1 to a conducting Medium 2. Following statements are given :<br> (A) $E_t≃ {2Z_C}/Z_0E_i$<br> (B) $E_r= {Z_C-Z_0}/{Z_C+Z_0}E_i$<br> (C) $E_r= {Z_C}/{Z_C+Z_0}E_i$<br> (D) $H_t≃2H_i$<br> (E) $H_t≃H_i$<br> Which of the above are correct?<br> Choose the most appropriate answer from the options given below :</p> ",
+    "QI": "https://firebasestorage.googleapis.com/v0/b/ugc-exam.appspot.com/o/Electronic%20Science%2FPrevious%20Years%20Papers%2FImages%2F2020IMAGES%2F2020-June-q-105.PNG?alt=media&token=42394631-70aa-453f-b718-0ad347453149",
+    "O": [
+      "(A) (A), (B), (D) only ",
+      "(B) (A), (C), (E) only ",
+      "(C) (A), (B), (E) only ",
+      "(D) (B), (C), (D) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "6": {
+    "Q": "A dielectric medium has a relative permittivity $ε_r$=6. for this the values of Index of Refraction and Phase velocity are given<br> (A) η=6<br> (B) η=2.45<br> (C) Phase Velocity = 3 x $10^8$ m/s<br> (D) Phase Velocity = 1.22 x $10^8$ m/s<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (A), (C) only ",
+      "(B) (A), (D) only ",
+      "(C) (B), (D) only ",
+      "(D) (B), (C) only "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "7": {
+    "Q": "A plane wave of frequency 2 GHz travelling in air parallel to a flat ground plane with H parallel to the ground plane losses 3 μ W/$m^2$ into the ground plane having conductivity σ = $10^7$ ℧ /m. μ r= $∈_r$=1. The following data is given<br> (A) E=3.89 V/m<br> (B) E=8.98 V/m<br> (C) H=10.35 mA/m<br> (D) H=3.97 mA/m<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (A), (C) only ",
+      "(B) (A), (D) only ",
+      "(C) (B), (C) only ",
+      "(D) (B), (D) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "8": {
+    "Q": "Which of the following statements about the matched filter in a communication receiver are correct?<br> (A) It may produce phase error if synchronization is Improper<br> (B) Its impulse response depends on the singal shape<br> (C) The characteristics of the matched filter is matched with the transmitted data<br> (D) It produces inter symbol interference<br> (E) It measures the correlation between incoming received message and its impulse response<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (B), (C), (E) only ",
+      "(B) (A), (B), (C) only ",
+      "(C) (C), (D), (E) only ",
+      "(D) (A), (D), (E) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "9": {
+    "Q": "Which of the following statements are true?<br> (A) A parity check code can detect and correct single bit error<br> (B) The efficiency of Huffman code is linearly proportional to average entropy<br> (C) Coding increases the channel bandwidth<br> (D) Coding increases the information rate<br> (E) A code dictionary with minimum distance 2 is not capable of error correction.<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A), (B), (D) only ",
+      "(B) (B), (D), (E) only ",
+      "(C) (A), (C), (D) only ",
+      "(D) (B), (C), (D) only "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "10": {
+    "Q": "Which of the following statements are correct?<br> (A) A given source will have maximum entropy if the message produced are statistically independent<br> (B) As the bandwidth approaches infinity. the channel capacity becomes zero.<br> (C) For binary transmission the baud rate is always equal to bit rate<br> (D) The mutual information of a channel with independent input and output is constant<br> (E) Nat is a unit of information<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (E) only ",
+      "(B) (A) and (B) only ",
+      "(C) (C) and (E) only ",
+      "(D) (A), (D) and (E) only "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "11": {
+    "Q": "A differential transformer<br> (A) is a differential voltage of two secondary windings of a transformer is varied by positioning the magnetic core through an externally applied force<br> (B) is used for pressure measurement<br> (C) is used for force measurement<br> (D) is used for displacement measurement<br> (E) is used for position measurement<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) only ",
+      "(B) (B) only ",
+      "(C) (C) only ",
+      "(D) (A), (B), (C), (D), (E) only "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "12": {
+    "Q": "The wheatstone bridge is widely used for precision measurement of resistance :<br> (A) from 1 Ω to few M Ω <br> (B) very low resistance<br> (C) very high resistance<br> (D) 1 m Ω -10 k Ω<br> (E) 0.1 Ω  -100 k Ω<br> Chooe the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) only ",
+      "(B) (A) and (B) only ",
+      "(C) (B) and (C) only ",
+      "(D) (D) and (E) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "13": {
+    "Q": "The Schering bridge, one of the most important AC bridge<br> (A) It is used for capacitance measurement<br> (B) It is used for phase angle measurement<br> (C) It is used for inductance measurement<br> (D) Itis used for resistance measurement<br> (E) It is used for torque measurement<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (B) only ",
+      "(B) (C) only ",
+      "(C) (D) only ",
+      "(D) (E) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "14": {
+    "Q": "For the unit step response of second order system following statements are given :<br> (A) Delay time is the time required for the response to reach 60% of the final value in first attempt<br> (B) Settling time is the time required for the response to reach and stay within (2% or 5%) tolerance band of its final value<br> (C) Delay time is the time required for the response to reach 50% of the final value in first attempt<br> (D) Settling time is the time required for the response to reach and stay within 15% of the final value<br> Which of the above are correct?<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (B) only ",
+      "(B) (B) and (C) only ",
+      "(C) (C) and (D) only ",
+      "(D) (A) and (D) only "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "15": {
+    "Q": "A unity feedback system as shown has a damping ratio of 0.8 using derivative control.<br> Following parameters are obtained<br> (A) Characteristic equation is $s^2$ +1.6 s +16=0<br> (B) ξ=0.2 (without derivative control)<br> (C) ξ=0.8 (without derivative control)<br> (D) $ω_n$ =4 rad/sec<br> Choose the most appropriate answer from the options given below :</p> ",
+    "QI": "https://firebasestorage.googleapis.com/v0/b/ugc-exam.appspot.com/o/Electronic%20Science%2FPrevious%20Years%20Papers%2FImages%2F2020IMAGES%2F2020-June-q-115.PNG?alt=media&token=0b377edd-7e88-4aaa-afc9-83ce656f9f04",
+    "O": [
+      "(A) (A), (C), (D) only ",
+      "(B) (B), (D) only ",
+      "(C) (A), (B), (D) only ",
+      "(D) (C), (D) "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "16": {
+    "Q": "Match List I with List II<br> List I<br> (Volt — ampere characteristics of tunnel diode)<br> (a) At peak current $I_p$ corresponding to $V_p$<br> (b) If voltage increases beyond $V_p$<br> (c) When voltage is just more than valley voltage<br> (d) When voltage is more than peak forward voltage<br> List II<br> (Observation)<br> (i) Resistance becomes and remains positive<br> (ii) Current reaches $I_p$ (peak current) and increases<br> (iii) ${dI}/{dV}$ is negative<br> (iv) Slope ${dI}/{dV}$ is zero<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(i),(b)-(ii),(c)-(iii),(d)-(iv) ",
+      "(B) (a)-(iv),(b)-(iii),(c)-(i),(d)-(ii) ",
+      "(C) (a)-(ii),(b)-(i),(c)-(iv),(d)-(iii) ",
+      "(D) (a)-(iii),(b)-(iv),(c)-(i),(d)-(i) "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "17": {
+    "Q": "Match List I with List II<br> List I <br> (Diffusion profile measurement technique)<br> (a) Capacitance — voltage<br> (b) Differential - conductance<br> (c) spreading resistance<br> (d) RBS<br> List II<br> (Characteristics)<br> (i) Not suitable for diffusion studies in VLSI process when shallow junction profile are of interest<br> (ii) Needs Van de graff generator<br> (iii) Two— point probe arrangement<br> (iv) Concentration near the junction space — charge region at zero bias cannot be measured<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(i),(b)-(ii),(c)-(iii),(d)-(iv) ",
+      "(B) (a)-(iv),(b)-(i),(c)-(iii),(d)-(ii) ",
+      "(C) (a)-(iii),(b)-(iv),(c)-(ii),(d)-(i) ",
+      "(D) (a)-(ii),(b)-(iii),(c)-(i),(d)-(iv) "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "18": {
+    "Q": "Match List I with List II<br> List I <br> (h parameter)<br> (a) $h_{11}$<br> (b) $h_{12}$<br> (c) $h_{21}$<br> (d) $h_{22}$<br> List II<br> (T parameter)<br> (i) ${ΔT}/D$<br> (ii) $-1/D$<br> (iii) $B/D$<br> (iv) $C/D$<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(iv),(b)-(ii),(c)-(i),(d)-(iii) ",
+      "(B) (a)-(ii),(b)-(i),(c)-(iv),(d)-(iii) ",
+      "(C) (a)-(ii),(b)-(iii),(c)-(i),(d)-(iv) ",
+      "(D) (a)-(iii),(b)-(i),(c)-(ii),(d)-(iv) "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "19": {
+    "Q": "Match List I with List II<br> List I <br> (Configuration)<br> (a) Fixed Bias<br> (b) Emitter Bias<br> (c) Emitter follower<br> (d) Common - base<br> List II<br> (Equation of Base current)<br> (i) $I_B={V_{CC}-V_{BE}}/{R_B+(β+1)R_E}$<br> (ii) $I_B={V_{EE}-V_{BE}}/{R_B+(β+1)R_E}$<br> (iii) $I_B={V_{CC}-V_{BE}}/{R_B}$<br> (iv) $I_B={V_{EE}-V_{BE}}/{R_E+(β+1)}$<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(ii),(b)-(iii),(c)-(i),(d)-(iv) ",
+      "(B) (a)-(ii),(b)-(iii),(c)-(iv),(d)-(i) ",
+      "(C) (a)-(iii),(b)-(ii),(c)-(iv),(d)-(i) ",
+      "(D) (a)-(iii),(b)-(i),(c)-(ii),(d)-(iv) "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "20": {
+    "Q": "Match List I with List II<br> List I <br> (a) Simplest type of ADC<br> (b) Fastest ADC<br> (c) Slowest ADC<br> (d) Most widely used ADC<br> List II<br> (i) Flash—type ADC<br> (ii) dual—slope type ADC<br> (iii) counter — type ADC<br> (iv) Successive — approximation type ADC<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(iii),(b)-(i),(c)-(ii),(d)-(iv) ",
+      "(B) (a)-(ii),(b)-(iv),(c)-(i),(d)-(iii) ",
+      "(C) (a)-(iv),(b)-(ii),(c)-(iii),(d)-(i) ",
+      "(D) (a)-(iii),(b)-(iv),(c)-(ii),(d)-(i) "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "21": {
+    "Q": "Match List I with List II<br> List I <br> (Interrupt)<br> (a) Reset<br> (b) External hardware int. 0 (INT0)<br> (c) Timer 0 interrupt (TF0)<br> (d) Timer 1 interrupt (TF1)<br> List II<br> (ROM location (Hex.))<br> (i) 001B<br> (ii) 0003<br> (iii) 000B<br> (iv) 0000<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(iv),(b)-(ii),(c)-(iii),(d)-(i) ",
+      "(B) (a)-(iv),(b)-(iii),(c)-(ii),(d)-(i) ",
+      "(C) (a)-(iii),(b)-(ii),(c)-(iv),(d)-(i) ",
+      "(D) (a)-(i),(b)-(ii),(c)-(iii),(d)-(iv) "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "22": {
+    "Q": "Match List I with List II<br> List I <br> (a) Klystron <br> (b) Transfer Electron devices<br> (c) MESFET<br> (d) Travelling wave tube<br> List II<br> (i) Slow structure<br> (ii) Bunching<br> (iii) Warm electrons<br> (iv) Pinch - off<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(ii),(b)-(iii),(c)-(iv),(d)-(i) ",
+      "(B) (a)-(i),(b)-(iii),(c)-(ii),(d)-(iv) ",
+      "(C) (a)-(iii),(b)-(ii),(c)-(i),(d)-(iv) ",
+      "(D) (a)-(iv),(b)-(iii),(c)-(ii),(d)-(i) "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "23": {
+    "Q": "Match List I with List II<br> List I<br> (a) DPSEK<br> (b) AM<br> (c) FM<br> (d) DSB-SC<br> List II<br> (i) Non coherent detector<br> (ii) Ratio detector<br> (iii) Coherent detector<br> (iv) Rectifier Detector<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(i),(b)-(iv),(c)-(ii),(d)-(iii) ",
+      "(B) (a)-(iii),(b)-(i),(c)-(iv),(d)-(ii) ",
+      "(C) (a)-(ii),(b)-(iii),(c)-(i),(d)-(iv) ",
+      "(D) (a)-(iv),(b)-(ii),(c)-(iii),(d)-(i) "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "24": {
+    "Q": "Match List I with List II<br> For time response of a second order system<br> List I<br> (a) Slower time constant<br> (b) Rise time<br> (c) Settling time<br> (d) Faster time constant<br>   List II<br> (i) $1/{(ξ+√{ξ^2+1})ω_n}$<br> (ii) $1/{4ξω_n}$<br> (iii) ${π-ϕ}/{ω_n√{1-ξ^2}}$<br> (iv) $1/{(ξ-√{ξ^2-1})ω_n$<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(i),(b)-(iii),(c)-(iv),(d)-(ii) ",
+      "(B) (a)-(ii),(b)-(iii),(c)-(iv),(d)-(i) ",
+      "(C) (a)-(iv),(b)-(iii),(c)-(ii),(d)-(i) ",
+      "(D) (a)-(iii),(b)-(iv),(c)-(i),(d)-(ii) "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "25": {
+    "Q": "Match List I with List II<br> List I <br> (Symbol) <br> (a) da<br> (b) d<br> (c) f <br> (d) a<br> List II<br> (Value)<br> (i) $10^{-15}$<br> (ii) $10^{-1}$<br> (iii) $10^{-18}$<br> (iv) 10<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (a)-(iv),(b)-(ii),(c)-(i),(d)-(iii) ",
+      "(B) (a)-(ii),(b)-(iv),(c)-(i),(d)-(iii) ",
+      "(C) (a)-(i),(b)-(ii),(c)-(iii),(d)-(iv) ",
+      "(D) (a)-(iv),(b)-(ii),(c)-(iii),(d)-(i) "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "26": {
+    "Q": "Arrange the following semiconductor materials on the basis of Energy — Bondgap ($E_g$) from highest to lowest<br> (A) ZnSe<br> (B) InAs<br> (C) CdTe<br> (D) Ge<br> (E) InP<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (D), (C), (B), (A), (E) ",
+      "(B) (C), (B), (A), (E), (D) ",
+      "(C) (B), (A), (D), (C), (E) ",
+      "(D) (A), (C), (E), (D), (B) "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "27": {
+    "Q": "The sequence of first to last step involved in a typical silicon gate n — MOS transistor is<br> (A) Gate oxidation<br> (B) Contact cuts<br> (C) Patterning $SiO_2$, layer<br> (D) Implant or diffusion<br> (E) Patterning of aluminium layer<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (C), (D), (A), (B), (E) ",
+      "(B) (B), (D), (A), (C), (E) ",
+      "(C) (C), (A), (D), (B), (E) ",
+      "(D) (B), (A), (D), (E), (C) "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "28": {
+    "Q": "Arrange the Nyquist sampling interval of the signal in descending order<br> (A) sin c(300t)<br> (B) sin c(300t) + sin$c^2$(300t)<br> (C) sin c(200t)<br> (D) sin c(200t) + sinc$c^2$ (200t)<br> (E) sin c(200t)+sin $c^2$ (500t)<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A), (C), (B), (D), (E) ",
+      "(B) (C), (D), (E), (A), (B) ",
+      "(C) (C), (A), (D), (E), (B) ",
+      "(D) (A), (E), (D), (C), (B) "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "29": {
+    "Q": "Compare the output signal swing of the following power amplifiers<br> (A) Class A<br> (B) Class B<br> (C) Class AB<br> (D) Class C<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) > (B) > (C) > (D) ",
+      "(B) (D) > (C) > (B) > (A) ",
+      "(C) (D) > (B) > (C) > (A) ",
+      "(D) (A) > (C) > (B) > (D) "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "30": {
+    "Q": "For designing a sequential circuit, the following steps are used as general methodology<br> (A) State Assignment and transition table<br> (B) State diagram<br> (C) State table<br> (D) Realization<br> (E) k-maps and minimal expressions<br> The sequence of these steps in order of their execution is<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (C), (A), (B), (E), (D) ",
+      "(B) (E), (B), (A), (D), (C) ",
+      "(C) (A), (B), (E), (C), (D) ",
+      "(D) (B), (C), (A), (E), (D) "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "31": {
+    "Q": "Arrange the following addresses in ascending order of their priority<br> (A) Address for divide error is 0000H<br> (B) Address for one — byte interrupt instruction, INT is 000CH<br> (C) Address for overflow, INTO instruction is 0010H<br> (D) Address for single step trap — TF must be set is 0004H<br> (E) Address for non maskable interrupt is 0008H<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A), (D), (E), (B), (C) ",
+      "(B) (A), (E), (D), (B), (C) ",
+      "(C) (A), (E), (B), (C), (D) ",
+      "(D) (A), (D), (B), (E), (C) "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "32": {
+    "Q": "Following materials are given<br> (A) Nickel<br> (B) Silicon iron<br> (C) Silver<br> (D) Cobalt<br> Arrange them in ascending order of relative permeability<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (C), (D), (B), (A) ",
+      "(B) (C), (D), (A), (B) ",
+      "(C) (B), (D), (A), (C) ",
+      "(D) (C), (A), (D), (B) "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "33": {
+    "Q": "Arrange the bandwidth efficiency of the following M — ary modulation schemes in descending order<br> (A) 8 - ary PSK<br> (B) 8 - ary FSK<br> (C) 16 - ary FSK<br> (D) 16 - ary PSK<br> (E) 4 - ary FSK<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (D), (C), (A), (B), (E) ",
+      "(B) (D), (E), (A), (C), (B) ",
+      "(C) (C), (D), (B), (A), (E) ",
+      "(D) (D), (A), (E), (B), (C) "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "34": {
+    "Q": "For a unity feedback system. open loop. gain is a complex quantity (x+ jy) and M circles are drawn for different values of ‘M’<br> (A) M=1<br> (B) M=2<br> (C) M=3<br> (D) M=1.6<br> Arrange the above in ascending order of radius for constant magnitude Loci<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (C), (B), (D), (A) ",
+      "(B) (B), (C), (A), (D) ",
+      "(C) (D), (A), (B), (C) ",
+      "(D) (C), (D), (A), (B) "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "35": {
+    "Q": "Arrange the following in their order of occurrence from control grid to fluorescent screen<br> (A) Focusing Anode<br> (B) Horizontal Deflection Plates<br> (C) Aquadag<br> (D) Pre — accelerating anode<br> (E) Vertical deflection plates<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A), (D), (C), (B), (E) ",
+      "(B) (B), (C), (D), (A), (E) ",
+      "(C) (D), (A), (E), (B), (C) ",
+      "(D) (C), (B), (D), (E), (A) "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "36": {
+    "Q": "Statement I: For memory capacitors, one of the popular structure is trench capacitor to push memory densities to 64 Mbits and beyond.<br> Statement II: The sides of the trench capacitor are doped $n^{+}$ and the bottom of the trench has a $p^{+}$region, that forms a channel — stop region to isolate adjacent capacitors.<br> In the light of the above statements. choose the correct answer from the options given below</p> ",
+    "O": [
+      "(A) Both Statement I and Statement I are true ",
+      "(B) Both Statement I and Statement II are false ",
+      "(C) Statement I is correct but Statement II is false ",
+      "(D) Statement I is incorrect but Statement II is true "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "37": {
+    "Q": "Given below are two statements : One is labelled as Assertion (A) and the other is labelled as Reason (R)<br> Assertion (A): The circuits that are quite stable and relatively insensitive to temperature variations have high stability factors.<br> Reasons (R): For a particular configuration. if a change in $I_{CO}$ fails to produce a significant change in $I_{C}$ the stability factor will be quite small.<br> In the light of the above statement. choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) Both (A) and (R) are true and (R) is the correct explanation of (A) ",
+      "(B) Both (A) and (R) are true but (R) is not the correct explanation of (A) ",
+      "(C) (A) is true but (R) is false ",
+      "(D) (A) is false but (R) is true "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "38": {
+    "Q": "Given below are two statements : One is labelled as Assertion (A) and the other is labelled as Reason (R)<br> Assertion (A) : In Gunn effect. when the electric field is varied from zero to a threshold value. The drift velocity decreases<br> Reasons (R): Beyond the threshold electric field. if the electric field is increased. The drift velocity is decreased and the diode exhibits negative resistance.<br> In the light of the above statement. choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) Both (A) and (R) are correct and (R) is the correct explanation of (A) ",
+      "(B) Both (A) and (R) are correct but (R) is not the correct explanation of (A) ",
+      "(C) (A) is correct but (R) is not correct ",
+      "(D) (A) is not correct but (R) is correct "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "39": {
+    "Q": "Give below are two statements :<br> Statement I: The Hall effect sensor is included in the magnetic core structure of the current probe.<br> Statement II: The Hall effect sensor assures that the static magnetic flux in the core is exactly zero.<br> In the light of the above statements, choose the most appropriate answer from the options given below</p> ",
+    "O": [
+      "(A) Both Statement I and Statement II are correct ",
+      "(B) Both Statement I and Statement II are incorrect ",
+      "(C) Statement I is correct but Statement II is incorrect ",
+      "(D) Statement I is incorrect but Statement II is correct "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "40": {
+    "Q": "Given below are two statements : One is labelled as Assertion (A) and the other is labelled as Reason (R)<br> Assertion (A): The Syndrome depends on both the error pattern and the transmitted code word.<br> Reasons (R): All error patterns that differ by a code word have the same syndrome.<br> In the light of the above statements, choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) Both (A) and (R) are true and (R) is the correct explanation of (A) ",
+      "(B) Both (A) and (R) are true but (R) is not the correct explanation of (A) ",
+      "(C) (A) is true but (R) is false ",
+      "(D) (A) is false but (R) is true  "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "41": {
+    "P": "P1",
+    "Q": "Which semiconductor materials are used to make Charge Couple Device (CCD)?<br> (A) Si<br> (B) Hg Cd Tc<br> (C) Ta<br> (D) In Sb<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) only ",
+      "(B) (A) and (C) only ",
+      "(C) (C) and (D) only ",
+      "(D) (A), (B) and (D) only "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "42": {
+    "P": "P1",
+    "Q": "CCDs have the following characteristics ",
+    "O": [
+      "(A) Low dark current, high — noise ",
+      "(B) High — voltage operation, low — noise ",
+      "(C) Poor dynamic range, low — dark current ",
+      "(D) Good linearity, low — dark current "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "43": {
+    "P": "P1",
+    "Q": "Give below are two statements :<br> Statement I: The advantage of frame — transfer readout architecture. compared to the interline, transfer is a more efficient light — sensing area.<br> Statement II: For both interline transfer and frame — transfer, all columns advance their charge signals to the horizontal output register simultaneously<br> In the light of the above statements. choose the most appropriate answer from the options given below</p> ",
+    "O": [
+      "(A) Both Statement I and Statement II are correct ",
+      "(B) Both Statement I and Statement II are incorrect ",
+      "(C) Statement I is correct but Statement II is incorrect ",
+      "(D) Statement I is incorrect but Statement II is correct "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "44": {
+    "P": "P1",
+    "Q": "Statement I: A line imager with dual output registers has poor read — out speed<br> Statement II: In the frame transfer scheme, signals are shifted to a storage area away from the sensing area.<br> In the light of the above statements, choose the correct answer from the options given below</p> ",
+    "O": [
+      "(A) Both Statement I and Statement II are true ",
+      "(B) Both Statement I and Statement II are false ",
+      "(C) Statement I is correct but Statement II is false ",
+      "(D) Statement I is incorrect but Statement II is true "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "45": {
+    "P": "P1",
+    "Q": "Give below are two statements :<br> Statement I: The three basic charge — transfer mechanisms in CCD are (a) thermal diffusion, (b) self —induced drift and (c) fringing — field effect.<br> Statement II: For small amount of signal charge. self induced drift is the dominant factor and for a reasonably large charge packet; thermal diffusion is the dominant transfer mechanism<br> In the light of the above statements. choose the most appropriate answer from the options given below</p> ",
+    "O": [
+      "(A) Both Statement I and Statement II are correct ",
+      "(B) Both Statement I and Statement II are incorrect ",
+      "(C) Statement I is correct but Statement II is incorrect ",
+      "(D) Statement I is incorrect but Statement II is correct  "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "46": {
+    "P": "P2",
+    "Q": "Which of the following statements are not correct?<br> (A) Rise time of triangular waveform is always equal to its fall time<br> (B) Sawtooth waveforms have unequal rise and fall times<br> (C) Triangular wave generator can not be converted into a sawtooth wave generator<br> (D) Triangular wave generator can be converted into sawtooth wave generator by injecting a variable de voltage into the inverting terminal of the integrator.<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (C) and (D) only ",
+      "(B) (C) only ",
+      "(C) (B) only ",
+      "(D) (A) and (B) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "47": {
+    "P": "P2",
+    "Q": "The frequency of oscillation of a quadrature oscillator having resistance of 100 kΩ and 0.01 μF capacitor is ",
+    "O": [
+      "(A) 100 Hz ",
+      "(B) 159 Hz ",
+      "(C) 200 Hz ",
+      "(D) 259 Hz "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "48": {
+    "P": "P2",
+    "Q": "The equation of frequency of oscillation of a triangular wave generator is given as ",
+    "O": [
+      "(A) $f_0={3R_1C_1R_2}/R_3$ ",
+      "(B) $f_0={4R_1C_1R_2}/R_3$ ",
+      "(C) $f_0=R_3/{3R_1C_1R_2}$ ",
+      "(D) $f_0=R_3/{4R_1C_1R_2}$ "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "49": {
+    "P": "P2",
+    "Q": "A triangular wave generator can be formed by connecting ",
+    "O": [
+      "(A) an integrator to square wave generator ",
+      "(B) a differentiator to square wave generator ",
+      "(C) a differentiator to quadrature oscillator ",
+      "(D) an integrator to quadrature oscillator "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "50": {
+    "P": "P2",
+    "Q": "Square wave generator is also called ",
+    "O": [
+      "(A) one-shot multivibrator ",
+      "(B) sample and hold circuit ",
+      "(C) free- running multivibrator ",
+      "(D) voltage-to-current convertor "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "51": {
+    "Q": " In case of varactor diode with hyper-abrupt junction the sensitivity (S) value for $m =-{5/3}$ is ",
+    "O": [
+      "(A) 2 ",
+      "(B) 3 ",
+      "(C) 1 ",
+      "(D) $1/2$ "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "52": {
+    "Q": "For an ideal MS contact between a metal and a P-type semiconductor. The relation between barrier height $q ϕ_{(B_pO)}$ is given by ",
+    "O": [
+      "(A) $q ϕ_{(B_pO)}=q(ϕ_m-χ)$ ",
+      "(B) $q ϕ_{(B_pO)}={Eg}/2-q(ϕ_m-χ)$ ",
+      "(C) $q ϕ_{(B_pO)}=q(χ-ϕ_m)$ ",
+      "(D) $q ϕ_{(B_pO)}={Eg}-q(ϕ_m-χ)$ "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "53": {
+    "Q": "The Debye length $L_D$ is a characteristic length for semiconductor and is defined as (where. K is Boltzmann constant, T is temperature in Kelvin, gq is unit electronic charge, NV is impurity concentration of the substrate in per $m^3$, $∈_S$, is dielectric permittivity of silicon.) ",
+    "O": [
+      "(A) $L_D=√{{∈_SKT}/{qN}}$ ",
+      "(B) $L_D=√{{∈_SKT}/{q^2N}}$ ",
+      "(C) $L_D=√{{2∈_SKT}/{q^2N}}$ ",
+      "(D) $L_D=√{{∈_SKT}/{2qN}}$ "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "54": {
+    "Q": "The depletion layer width at thermal equilibrium for a one-sided abrupt junction is ",
+    "O": [
+      "(A) $W_D=√{{∈_S}/{qN}(Ψ_{bi}-{2KT}/q)}$ ",
+      "(B) $W_D=√{{2∈_S}/{qN}(Ψ_{bi}-{2KT}/q)}$ ",
+      "(C) $W_D=√{{2∈_S}/{qN}(Ψ_{bi}-{KT}/q)}$ ",
+      "(D) $W_D=√{{∈_S}/{qN}(Ψ_{bi}-{KT}/q)}$ "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "55": {
+    "Q": "Number of ways in which a Schottky defect can occur in silicon is given by(where N = total no. of atoms in a crystal of unit volume $n_s$ = number of Schottky defects per unit volume.) ",
+    "O": [
+      "(A) ${N!}/{(N-n_s)!}$ ",
+      "(B) ${N!}/{n_s!}$ ",
+      "(C) ${N!}/{N-n_s!}$ ",
+      "(D) ${N!}/{(N-n_s)!n_s!}$ "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "56": {
+    "Q": "What would be the system pressure of the Si-MBE system in order to achieve $5 x 10^7$ cm mean free path(L) of atoms? ",
+    "O": [
+      "(A) $10^{-7}$ torr ",
+      "(B) $10^{-8}$ torr ",
+      "(C) $10^{-9}$ torr ",
+      "(D) $10^{-10}$ torr "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "57": {
+    "Q": "Which Plasma Analytical technique involves placement of conducting probe smaller than particle mean free path directly in the plasma? ",
+    "O": [
+      "(A) Actinometry ",
+      "(B) Lesser Induced Fluorescence ",
+      "(C) Retarding Grid ",
+      "(D) Langmuir technique "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "58": {
+    "Q": "Which gas is used in reactive plasma for etching all three 1c. silicides. silicon and silicon dioxide ",
+    "O": [
+      "(A) $F_2$ ",
+      "(B) $SF_6$ ",
+      "(C) $CF_4 + O_2$ ",
+      "(D) $NF_3$ "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "59": {
+    "Q": "Consider a circuit as shown in figure. The circuit is. ",
+    "QI": "https://firebasestorage.googleapis.com/v0/b/ugc-exam.appspot.com/o/Electronic%20Science%2FPrevious%20Years%20Papers%2FImages%2F2020IMAGES%2F2020-June-q-59.PNG?alt=media&token=7b001db3-edda-4f7d-a8d4-6f7ae65cdb3b",
+    "O": [
+      "(A) Constant K low-pass filter ",
+      "(B) Constant K high-pass filter ",
+      "(C) The m-derived low-pass filter ",
+      "(D) The m-derived high-pass filter "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "60": {
+    "Q": "The region of convergence of the sequence x[n]=$({-1}/3}u[n]-(1/2)^nu[-n-1]$ is ",
+    "O": [
+      "(A) $1/3 < |z| < 1/2$ ",
+      "(B) $|z| > 1/3$ ",
+      "(C) $|z| < 1/2$ ",
+      "(D) $1/2 < |z| < 1/3$ "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "61": {
+    "Q": "The Fourier series expansion of a periodic function with half wave symmetry contains ",
+    "O": [
+      "(A) only even harmonics ",
+      "(B) only odd harmonics ",
+      "(C) both even and odd harmonics ",
+      "(D) no harmonics "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "62": {
+    "Q": "The Fourier transform of $x^{*} [—n]$ is ",
+    "O": [
+      "(A) $X^{*}(e^{-jw})$ ",
+      "(B) $X^{*}(e^{jw})$ ",
+      "(C) $X^{*}(-e^{-jw})$ ",
+      "(D) $X^{*}(-e^{jw})$ "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "63": {
+    "Q": "The slew rate for a 741 is 0.5 V/ μ second. The combination of maximum frequencies for an undistorted sine-wave output of 10 V peak and 1 V peak are approximately ",
+    "O": [
+      "(A) 8 kHz and 80 kHz ",
+      "(B) 48 kHz and 4.8 kHz ",
+      "(C) 20 kHz and 2 kHz ",
+      "(D) 2 kHz and 20 kHz "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "64": {
+    "Q": "Which of the following is not a component of basic Phase-Locked Loop (PLL)? ",
+    "O": [
+      "(A) Phase detector ",
+      "(B) Voltage controlled oscillator ",
+      "(C) Schmitt Trigger ",
+      "(D) Low-pass filter "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "65": {
+    "Q": "If $T_J$ and $T_A$ are junction temp. and ambient temp respectively $θ_{JC}$, $θ_{CS}$ and $θ_{SA}$ are transistor thermal resistance. insulator thermal resistance and heat-sink thermal resistance respectively. The equation of maximum power dissipation is given by ",
+    "O": [
+      "(A) $P_D={T_J+T_A}/{θ_{JC}+θ_{CS}+θ_{SA}}$ ",
+      "(B) $P_D={T_J-T_A}/{θ_{JC}+θ_{CS}+θ_{SA}}$ ",
+      "(C) $P_D={T_A+T_J}/{θ_{JC}+θ_{CS}+θ_{SA}}$ ",
+      "(D) $P_D={T_J-T_A}/{θ_{JC}+θ_{CS}-θ_{SA}}$ "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "66": {
+    "Q": "If $V_{ref}$ 18 the output reference value and $V_{ts}$ is the ideal full-scale output voltage when the digital inputs are all 1. Which of the following equations is correct?  ",
+    "O": [
+      "(A) $V_{ref}=V_{ts}(1-1/2^n)$ ",
+      "(B) $V_{ts}=V_{ref}(1/2^n-1)$ ",
+      "(C) $V_{ts}=V_{ref}(1-1/2^n)$ ",
+      "(D) $V_{ref}=V_{ts}(1/2^n-1)$ "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "67": {
+    "Q": "Which of the following statements is not correct about a CPLD (Complex Programmable Logic Device)? ",
+    "O": [
+      "(A) A CPLD is a logic device that consists of multiple SPLDs interconnected on a single chip ",
+      "(B) A CPLD is based on Product-Of-Sum (POS) architecture ",
+      "(C) ACPLD consists of multiple group of PAL with programmable interconnection ",
+      "(D) A CPLD can be used to implement large logic function "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "68": {
+    "Q": "The final code after encoding data bits 1101 into 7-bit even parity Hamming Code is ",
+    "O": [
+      "(A) 1110101 ",
+      "(B) 1011101 ",
+      "(C) 1010101 ",
+      "(D) 0110101 "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "69": {
+    "Q": "The A/O gates in which an addition variable or a combination of variables can be included in the logic operation are called ",
+    "O": [
+      "(A) AOI Gates ",
+      "(B) Expandable Gates ",
+      "(C) Variable Gates ",
+      "(D) Scalable Gates "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "70": {
+    "Q": "The statement which is not applicable to a Moore machine ",
+    "O": [
+      "(A) Output is a function of present state only ",
+      "(B) It requires more number of states for implementing same function ",
+      "(C) Input changes do not affect the output ",
+      "(D) The characteristic equation of output Z(t) can be given as Z(t)=g{S(t).x(t)} where S(t) represents the present state. x(t) indicates present input "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "71": {
+    "Q": "The program written below gives<br> MOV A, #85 H<br> CPL A,<br> ADD A, #</p> ",
+    "O": [
+      "(A) 7BH ",
+      "(B) B7H ",
+      "(C) 78H ",
+      "(D) 87H "
+    ],
+    "A": "A:B:C:D",
+    "E": "Marks given to all   "
+  },
+  "72": {
+    "Q": "The relationship between revolution per minute (rpm). steps per revolution (spr) and steps per second (sps) is given by ",
+    "O": [
+      "(A) $sps={rpm×spr}/60$ ",
+      "(B) $rpm=60/{sps×spr}$ ",
+      "(C) $rpm={spm×spr}/60$ ",
+      "(D) $sps=60/{rpm×spr}$ "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "73": {
+    "Q": "What happens if Interrupts INT0, TF0 and INT 1 are activated at the same time? ",
+    "O": [
+      "(A) They are latched and kept internally ",
+      "(B) They are latched and kept externally ",
+      "(C) They are unlatched and kept internally ",
+      "(D) They are unlatched and kept externally "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "74": {
+    "Q": "In the Register Indirect addressing mode. the effective address of the datum in the base register or an index register that is specified by the instruction is pene ((BX) ",
+    "O": [
+      "(A) $EA=[\\\\table (AX);(DI);(SI)]$ ",
+      "(B) $EA=[\\\\table (BX);(DI);(SI)]$ ",
+      "(C) $EA=[\\\\table (CX);(DI);(SI)]$ ",
+      "(D) $EA=[\\\\table (DX);(DI);(SI)]$ "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "75": {
+    "Q": "RG-59 U type transmission line has an open circuit impedance of $150∟{25°}Ω$. and a short circuit impedance of $37.5∟{-35°}Ω$. The value of characteristic impedance is given by : ",
+    "O": [
+      "(A) $4∟{-5°}Ω$ ",
+      "(B) $75∟{-5°}Ω$ ",
+      "(C) $150∟{25°}Ω$ ",
+      "(D) $37.5∟{-35°}Ω$ "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "76": {
+    "Q": "An air filled rectangular waveguide of dimension 7 x 3.5 $cm^2$ operates in the dominant $TE_{10}$ mode. The value of phase velocity of the wave in the guide at a frequency of 3.5 GHz is given by: ",
+    "O": [
+      "(A) 3.78 x $10^8$ m/S ",
+      "(B) 6.78 $10^5$ m/S ",
+      "(C) 5.78 x $10^8$ m/S ",
+      "(D) 4.78 = $10^8$ m/S "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "77": {
+    "Q": "In the case of linear arrays of ‘n’ isotropic point sources of equal amplitude and spacings. The expression for total electric field at a large distance in the direction 'θ’ is given by ",
+    "O": [
+      "(A) $E={1+e^{jnΨ}}/{1-e^{jΨ}}$ ",
+      "(B) $E={1+e^{jnΨ}}/{1+e^{jΨ}}$ ",
+      "(C) $E={1-e^{jΨ}}/{1+e^{njΨ}}$ ",
+      "(D) $E={1-e^{jnΨ}}/{1-e^{jΨ}}$ "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "78": {
+    "Q": "A sphere of radius $r_1$ =30 cm has a charge density $(ρr/r_1)$ where $ρ_0$=200pC/$m^3$. The value of total change on the sphere is given by ",
+    "O": [
+      "(A) 34 pC ",
+      "(B) 8.5 pC ",
+      "(C) 17 pC ",
+      "(D) 68 pC "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "79": {
+    "Q": "A VSB transmitter that transmits 25% of the other sideband along with wanted sideband. radiates 0.625 kW when the modulation percentage is 60%. If we want to transmit the same message by an AM transmitter then carrier power (in kW) required is ",
+    "O": [
+      "(A) 6.56 kW ",
+      "(B) 5.56kW ",
+      "(C) 4.56 kW ",
+      "(D) 7.56 EW "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "80": {
+    "Q": "The term dispersion describe the process of ",
+    "O": [
+      "(A) reflecting light from a smooth surface ",
+      "(B) the process by which light is absorbed by an uneven rough surface ",
+      "(C) light scattering ",
+      "(D) separating light into its component frequencies "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "81": {
+    "Q": "In a FDM system. 10 channels are multiplexed. Each channel has a BW of 50 kHz. If the guard band between the channels is 1 kHz. the minimum bandwidth required for transmission is ",
+    "O": [
+      "(A) 505 kHz ",
+      "(B) 500 kHz ",
+      "(C) 509 kHz ",
+      "(D) 510 kHz "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "82": {
+    "Q": "The main objective of CELL in a cellular mobile system is ",
+    "O": [
+      "(A) Higher bandwidth ",
+      "(B) Hand off ",
+      "(C) Frequency reuse ",
+      "(D) Simple modulation techniques "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "83": {
+    "Q": "In the following circuit β is in the range of 8 to 40. $R_C$, =11Ω. $V_{CC}$=200V. $V_B$=10V. If the $V_{CE}$ (saturation) = 1.0 V and $V_{BE}$ (sat)=1.5 V. overdrive factor = 5. The value of power loss in the transistor is given by :   ",
+    "QI": "https://firebasestorage.googleapis.com/v0/b/ugc-exam.appspot.com/o/Electronic%20Science%2FPrevious%20Years%20Papers%2FImages%2F2020IMAGES%2F2020-June-q-83.PNG?alt=media&token=a3b038a6-8ec3-4396-b46f-35300caf06d6",
+    "O": [
+      "(A) 35.07 W ",
+      "(B) 23.07 W ",
+      "(C) 13.07 W ",
+      "(D) 26.09 W "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "84": {
+    "Q": "A three phase four pole induction motor is operating on an input frequency of 75 Hz and slip of 4%. If the roter resistance of the machine is 1 Ω . The torque developed by the motor is eiven by : (Assume the operating voltage is 415 V. assuming stator voltage drop = 0) ",
+    "O": [
+      "(A) 6889 syn.watts ",
+      "(B) 7898 syn.watts ",
+      "(C) 8998 syn.watts ",
+      "(D) 9998 syn.watts "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "85": {
+    "Q": "Insertion of negative feedback in control system affects ",
+    "O": [
+      "(A) the transient response to vanish uniformly ",
+      "(B) the transient response to decay very fast ",
+      "(C) no change in transient response ",
+      "(D) the transient response decays at a slow rate "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "86": {
+    "Q": "For the following First Order System. The value of steady state error is given by ",
+    "QI": "https://firebasestorage.googleapis.com/v0/b/ugc-exam.appspot.com/o/Electronic%20Science%2FPrevious%20Years%20Papers%2FImages%2F2020IMAGES%2F2020-June-q-86.PNG?alt=media&token=0fcee6ae-c6c3-4220-9362-429ee3c0c24e",
+    "O": [
+      "(A) 0 (zero) ",
+      "(B) ∞ (infinite) ",
+      "(C) $(1-e^{-t/T})$ ",
+      "(D) $(1+e^{-t/T})$ "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "87": {
+    "Q": "A dual-slope integrating type of A/D converter has an integrating capacitor of 0.1 μ F and a resistance of 100 kΩ. If the reference voltage is 2 V. and the output of the integrator is not to exceed to 10 V. the value of maximum time the reference voltage can be integrated is ",
+    "O": [
+      "(A) 10 m second ",
+      "(B) 50 m second ",
+      "(C) 50 μ second ",
+      "(D) 10 μ second "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "88": {
+    "Q": "The velocity transducer consists of a moving coil suspended in the magnetic field of a permanent magnet. It is not used for measurement of velocities developed in a ",
+    "O": [
+      "(A) linear manner ",
+      "(B) sinusoidal manner ",
+      "(C) both (A) and (B) ",
+      "(D) discrete manner "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "89": {
+    "Q": "What is not the source of Error in a Thermocouple transducer ",
+    "O": [
+      "(A) Open junction ",
+      "(B) Thermal conduction ",
+      "(C) Galvanic action ",
+      "(D) Hall effect "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "90": {
+    "Q": "Which is not the important characteristics of thermistors that make them extremely useful in measurement and control applications? ",
+    "O": [
+      "(A) the resistance — temperature characteristic ",
+      "(B) the voltage — current characteristic ",
+      "(C) the current — time characteristic ",
+      "(D) the power — time characteristic "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "91": {
+    "Q": "Currents in the three terminals of a transistor are mostly diffusion currents which are related by the minority carrier distribution in the base region. Which of the following statements are correct?<br> (A) The applied voltages control the boundary densities through the term exp(qV/kT).<br> (B) The base current is the difference between the emitter and collector currents.<br> (C) In order to maximize emitter resistance, the emitter contact is usually made directly on top of the emitter.<br> (D) Emitter Bandgap narrowing increases current gain.<br> (E) Emitter and collector currents are given by the minority density gradients at the junction boundaries.<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (B), (C), (D) only ",
+      "(B) (A). (B), (E) only ",
+      "(C) (C). (B), (E) only ",
+      "(D) (D), (E), (A) only "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "92": {
+    "Q": "The small signal model of tunnel diode can be represented as<br> where $R_S$ is series resistance;<br> $L_S$ is series inductance:<br> $C_j$ is Junction capacitance;<br> $-R_n$ is negative resistance<br> Choose the most appropriate answer from the options given below :</p> ",
+    "QI": "https://firebasestorage.googleapis.com/v0/b/ugc-exam.appspot.com/o/Electronic%20Science%2FPrevious%20Years%20Papers%2FImages%2F2020IMAGES%2F2020-June-q-92.PNG?alt=media&token=4e29eb56-0883-4458-9a85-338b6e92883a",
+    "O": [
+      "(A) (A) only ",
+      "(B) (A) and (B) only ",
+      "(C) (C) only ",
+      "(D) (C) and (D) only "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "93": {
+    "Q": "In which of the following techniques beam of electrons is used as a probe and the secondary radiation is X-ray.<br> (A) LEED<br> (B) EMP<br> (C) TEM<br> (D) STEM<br> (E) EELS<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (E) only ",
+      "(B) (B) and (D) only ",
+      "(C) (C) and (E) only ",
+      "(D) (A) and (C) only "
+    ],
+    "A": "B",
+    "E": "   "
+  },
+  "94": {
+    "Q": "Which metals or alloys amongst the following. do not reduce $SiO_2$ and are found to have poor adhesion on $SiO_2$ surfaces.<br> (A) W<br> (B) $M_o$<br> (C) Al<br> (D) TiN<br> (E) $WSi_2$<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (C) only ",
+      "(B) (B) and (C) only ",
+      "(C) (C) and (D) only ",
+      "(D) (A) and (B) only "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "95": {
+    "Q": "Which of the following gases commonly used in CVD are pyrophoric, toxic and flammable?<br> (A) Phosphine<br> (B) Argon<br> (C) Nitrogen Oxide<br> (D) Silane<br> (E) Nitrogen<br> Choose the most appropriate answer from the options given below:</p> ",
+    "O": [
+      "(A) (B) and (C) only ",
+      "(B) (C) and (E) only ",
+      "(C) (B) and (E) only ",
+      "(D) (A) and (D) only "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "96": {
+    "Q": "Consider a circuit shown in figure :<br> The correct values of Y parameters are<br> (A) $Y_{11}=1/4℧, Y_{12}=-5/4℧$<br> (B) $Y_{11}=-3/4℧, Y_{22}=-1/4℧$<br> (C) $Y_{11}=5/4℧, Y_{22}=-1/4℧$<br> (D) $Y_{21}=-5/4℧, Y_{22}=-1/4℧$<br> (E) $Y_{21}=-1/4℧, Y_{22}=-3/4℧$</p> ",
+    "QI": "https://firebasestorage.googleapis.com/v0/b/ugc-exam.appspot.com/o/Electronic%20Science%2FPrevious%20Years%20Papers%2FImages%2F2020IMAGES%2F2020-June-q-96.PNG?alt=media&token=191904dc-9bc1-43a5-958f-5b0c76bb5e58",
+    "O": [
+      "(A) (B) and (C) only ",
+      "(B) (A) and (D) only ",
+      "(C) (A) and (E) only ",
+      "(D) (C) and (E) only "
+    ],
+    "A": "C",
+    "E": "   "
+  },
+  "97": {
+    "Q": "Which of the following statements regarding trees are correct?<br> (A) All the links of a tree together does not constitute the complement of the corresponding tree<br> (B) A Connected subgraph of a connected graph is a tree if there exist (n—1) nodes of the group<br> (C) A connected subgraph of a connected graph is a tree if there exists many paths between any pair of nodes in it<br> (D) The number of terminal nodes or end vertices of every tree are at least two<br> (E) Every connected graph has at least one tree<br> Choose the correct answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (B) only ",
+      "(B) (B) and (C) only ",
+      "(C) (B) and (D) only ",
+      "(D) (D) and (E) only "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "98": {
+    "Q": "Which of the following statements are not correct?<br> (A) Precision rectifiers use positive feedback to compensate for the forward drop of the diodes<br> (B) Precision peak detector uses a capacitor to effectively lengthen the duration of the peaks<br> (C) Limiters may be thought of as programmable signal choppers<br> (D) In order to improve performance of comparators negative feedback may be used<br> (E) There are two basic approaches for realizing a design : ( 1) using zener diodes and ( 2) using biased-signal diode network<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (D) only ",
+      "(B) (D) and (E) only ",
+      "(C) (A) and (C) only ",
+      "(D) (B) and (D) only "
+    ],
+    "A": "A",
+    "E": "   "
+  },
+  "99": {
+    "Q": "The network formed by resistors and capacitors for modifying the rate of change of gain and the phase shift is called a compensating network. Which of the following statements are not correct?<br> (A) The main purpose of a compensating network is to modify the performance of op-amp circuit over the desired frequency range<br> (B) There are two types of op-amps : internally compensated and externally compensated<br> (C) 741 C is an externally compensated op-amp while 709 C is internally compensated op-amp<br> (D) The phase lag and phase lead are most commonly used compensating networks in op-amps<br> (E) Phase lag contributes a positive phase angle and phase lead a negative phase angle<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (B) and (C) only ",
+      "(B) (B) and (E) only ",
+      "(C) (C) and (D) only ",
+      "(D) (C) and (E) only "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "100": {
+    "Q": "Three major types of programmable logic are SPLD, CPLD and FPGA. Each major type have many manufacturer specific subcategories. Some statements are given below related to these programmable logic devices.<br> Which of the following statements are correct?<br> (A) CPLDs have much higher capacity than SPLDs<br> (B) FPGAs are similar to CPLDs in their internal organization<br> (C) Two basic classes of FPGAs are coarse grained and fine grained<br> (D) Fine grained FPGA has large logic blocks while coarse-grained FPGA has much smaller logic blocks<br> (E) FPGAs come in packages ranging less than 1000 pins.<br> Choose the most appropriate answer from the options given below :</p> ",
+    "O": [
+      "(A) (A) and (D) only ",
+      "(B) (B) and (D) only ",
+      "(C) (B) and (C) only ",
+      "(D) (A) and (C) only "
+    ],
+    "A": "D",
+    "E": "   "
+  },
+  "P": {
+    "P1": "Question Numbers : (41 to 45): Charge Couple Device (CCD) can be used either as an image sensor or as a shift register. As a photo detector it has also been called charge — coupled image sensor or charge — transfer image sensor. Most common area images use either interline transfer or frame transfer readout architecture. The spacing between CCDs should be small for efficient charge transfer.",
+    "P2": "Question Numbers : (46 to 50): The ability of the oscillator circuit is to oscillate at one exact frequency is called frequency stability. The frequency of oscillation is an important criterion. Usually the circuits producing sine waves are called oscillators while those generating a square wave. triangular wave and/or saw tooth wave are called generators though both of these can be used interchangeably."
+  },
+  "Info": {
+    "Year": "2012",
+    "Total": 100
+  }
+}

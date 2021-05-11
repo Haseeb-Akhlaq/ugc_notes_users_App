@@ -3,9 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'package:ugc_net_notes/constants/colors.dart';
 import 'package:ugc_net_notes/models/courseModel.dart';
+import 'package:ugc_net_notes/providers/ScreenChangeProvider.dart';
 import 'package:ugc_net_notes/screens/unitsScreen.dart';
+import 'package:ugc_net_notes/widgets/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -67,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
         enrolledCourse.totalUnits = courseDetailsData.data()['totalUnits'];
         enrolledCourse.totalTopics = courseDetailsData.data()['totalTopics'];
         enrolledCourse.totalCards = courseDetailsData.data()['totalCards'];
+        enrolledCourse.courseCode = courseDetailsData.data()['courseCode'];
 
         print(enrolledCourse.totalCards);
 
@@ -90,69 +94,142 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      width: double.infinity,
-                      child: Column(
+      appBar: AppBar(
+        title: Text('Enrolled Subjects'),
+        centerTitle: true,
+      ),
+      drawer: ScreenDrawer(),
+      body: isLoading
+          ? Center(
+              child: SpinKitCircle(
+                color: AppColors.primary,
+              ),
+            )
+          : Padding(
+              padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20),
+              child: Container(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    if (allEnrolledCoursed.length == 0)
+                      Column(
                         children: [
-                          Text(
-                            'Dear ${user.displayName}',
-                            style: TextStyle(
-                              fontSize: 18,
+                          Card(
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Container(
+                                width: double.infinity,
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'Dear ${user.displayName}',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Start Reading',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
-                          Text(
-                            'Start Reading',
-                            style: TextStyle(
-                              fontSize: 18,
+                          SizedBox(height: 40),
+                          GestureDetector(
+                            onTap: () {
+                              Provider.of<ScreenChangeProvider>(context,
+                                      listen: false)
+                                  .changeScreenIndex(1);
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: double.infinity,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text(
+                                'Click To Add Courses',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
                         ],
                       ),
+                    Expanded(
+                      child: Scrollbar(
+                        isAlwaysShown: true,
+                        showTrackOnHover: true,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: ListView.separated(
+                              separatorBuilder: (context, index) {
+                                return SizedBox(
+                                  height: 20,
+                                );
+                              },
+                              itemCount: allEnrolledCoursed.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    if (index == 0)
+                                      Card(
+                                        elevation: 5,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: Container(
+                                            width: double.infinity,
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  'Dear ${user.displayName}',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Start Reading',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    if (index == 0) SizedBox(height: 30),
+                                    CourseCard(
+                                      courseModel: allEnrolledCoursed[index],
+                                      index: index,
+                                    ),
+                                  ],
+                                );
+                              }),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
-              isLoading
-                  ? Center(
-                      child: SpinKitCircle(
-                        color: AppColors.primary,
-                      ),
-                    )
-                  : Expanded(
-                      child: ListView.separated(
-                          separatorBuilder: (context, index) {
-                            return SizedBox(
-                              height: 20,
-                            );
-                          },
-                          itemCount: allEnrolledCoursed.length,
-                          itemBuilder: (context, index) {
-                            return CourseCard(
-                              courseModel: allEnrolledCoursed[index],
-                              index: index,
-                            );
-                          }),
-                    ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }
@@ -179,6 +256,21 @@ class _CourseCardState extends State<CourseCard> {
     return progress;
   }
 
+  double getCourseNameFontSize(String name) {
+    if (name.length < 18) {
+      return 18;
+    }
+
+    if (name.length > 18 && name.length < 27) {
+      return 15;
+    }
+
+    if (name.length > 27) {
+      return 14;
+    }
+    return 12;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -187,25 +279,31 @@ class _CourseCardState extends State<CourseCard> {
       child: Padding(
         padding: EdgeInsets.all(10.0),
         child: Container(
-          height: 250,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(widget.courseModel.coursePic),
+              ListTile(
+                  minLeadingWidth: 0,
+                  leading: Container(
+                    width: 70,
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage:
+                              NetworkImage(widget.courseModel.coursePic),
+                        ),
+                        SizedBox(width: 10),
+                        Text('${widget.courseModel.courseCode}:')
+                      ],
+                    ),
                   ),
-                  Text('${widget.index + 1} .'),
-                  Text(
+                  title: Text(
                     widget.courseModel.courseName,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(
+                        fontSize: getCourseNameFontSize(
+                            widget.courseModel.courseName)),
                   ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  GestureDetector(
+                  trailing: GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
@@ -221,18 +319,17 @@ class _CourseCardState extends State<CourseCard> {
                       color: AppColors.primary,
                       size: 30,
                     ),
-                  )
-                ],
-              ),
+                  )),
               SizedBox(
                 height: 10,
               ),
-              Expanded(
+              Container(
+                height: 120,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
                     Container(
-                      width: 150,
+                      width: 130,
                       child: Card(
                         elevation: 3,
                         shape: RoundedRectangleBorder(
@@ -247,16 +344,19 @@ class _CourseCardState extends State<CourseCard> {
                                   widget.courseModel.daysLeftToExams,
                                   style: TextStyle(fontSize: 25),
                                 ),
-                                Text('Day left To Exams')
+                                Text(
+                                  'Day left To Exams',
+                                  style: TextStyle(fontSize: 12),
+                                )
                               ],
                             ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(width: 15),
+                    SizedBox(width: 5),
                     Container(
-                      width: 150,
+                      width: 130,
                       child: Card(
                         elevation: 3,
                         shape: RoundedRectangleBorder(
@@ -271,16 +371,19 @@ class _CourseCardState extends State<CourseCard> {
                                   widget.courseModel.numberOfTopicsLeft,
                                   style: TextStyle(fontSize: 25),
                                 ),
-                                Text('Topics Left')
+                                Text(
+                                  'Topics Left',
+                                  style: TextStyle(fontSize: 12),
+                                )
                               ],
                             ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(width: 15),
+                    SizedBox(width: 5),
                     Container(
-                      width: 150,
+                      width: 130,
                       child: Card(
                         elevation: 3,
                         shape: RoundedRectangleBorder(
@@ -295,7 +398,10 @@ class _CourseCardState extends State<CourseCard> {
                                   widget.courseModel.numberOfCardsLeft,
                                   style: TextStyle(fontSize: 25),
                                 ),
-                                Text('Cards left')
+                                Text(
+                                  'Cards left',
+                                  style: TextStyle(fontSize: 12),
+                                )
                               ],
                             ),
                           ),
@@ -309,6 +415,9 @@ class _CourseCardState extends State<CourseCard> {
                 height: 20,
               ),
               FAProgressBar(
+                displayTextStyle: TextStyle(
+                  color: Colors.black,
+                ),
                 progressColor: Colors.amber,
                 currentValue: getBarProgress(),
                 displayText: '%',
