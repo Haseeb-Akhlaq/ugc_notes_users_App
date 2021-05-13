@@ -230,26 +230,22 @@ class ProfileHeader extends StatelessWidget {
               backgroundImage: NetworkImage(user.profilePic ?? ''),
               radius: 50,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
+            Expanded(
+              child: ListTile(
+                title: Text(
                   user.userName ?? '',
                   style: TextStyle(
                     fontSize: 18,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
+                subtitle: Text(
                   user.email ?? '',
                   style: TextStyle(
                     color: Colors.blue,
                     fontSize: 10,
                   ),
                 ),
-              ],
+              ),
             )
           ],
         ),

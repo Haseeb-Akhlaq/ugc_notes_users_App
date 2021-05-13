@@ -178,43 +178,75 @@ class _CardsScreenState extends State<CardsScreen> {
             Row(
               children: [
                 Expanded(
-                  child: FAProgressBar(
-                    displayText: '%',
-                    displayTextStyle: TextStyle(
-                      color: isDarkMode ? Colors.white : Colors.black,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: FAProgressBar(
+                      displayText: '%',
+                      displayTextStyle: TextStyle(
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                      currentValue: cardsDone != 0 && cardsDone > 0
+                          ? (cardsDone / (finalCards.length) * 100).toInt()
+                          : 0,
+                      progressColor: Colors.amber,
                     ),
-                    currentValue: cardsDone != 0 && cardsDone > 0
-                        ? (cardsDone / (finalCards.length) * 100).toInt()
-                        : 0,
-                    progressColor: Colors.amber,
                   ),
                 ),
+                SizedBox(width: 5),
                 Container(
                   width: 70,
                   padding: EdgeInsets.only(bottom: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Stack(
                     children: [
+                      Positioned(
+                          left: 0,
+                          top: 15,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                'A',
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black),
+                              ),
+                              Text(
+                                'A ',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black),
+                              )
+                            ],
+                          )),
                       SliderTheme(
                         data: SliderThemeData(
+                          minThumbSeparation: 0,
                           thumbShape:
-                              RoundSliderThumbShape(enabledThumbRadius: 8),
+                              RoundSliderThumbShape(enabledThumbRadius: 7),
                         ),
-                        child: Slider(
-                            value: fontSize,
-                            min: 0,
-                            max: 10,
-                            divisions: 10,
-                            label: '$fontSize',
-                            activeColor:
-                                isDarkMode ? Colors.white : Colors.black,
-                            inactiveColor:
-                                isDarkMode ? Colors.white : Colors.black,
-                            onChanged: (v) {
-                              setState(() {
-                                fontSize = v;
-                              });
-                            }),
+                        child: Container(
+                          width: 70,
+                          child: Slider(
+                              value: fontSize,
+                              min: 0,
+                              max: 5,
+                              divisions: 5,
+                              label: '$fontSize',
+                              activeColor:
+                                  isDarkMode ? Colors.white : Colors.black,
+                              inactiveColor:
+                                  isDarkMode ? Colors.white : Colors.black,
+                              onChanged: (v) {
+                                setState(() {
+                                  fontSize = v;
+                                  print(v);
+                                });
+                              }),
+                        ),
                       ),
                     ],
                   ),
@@ -378,6 +410,28 @@ class CardTile extends StatefulWidget {
 class _CardTileState extends State<CardTile> {
   final user = FirebaseAuth.instance.currentUser;
 
+  FontSize getFontSize(double size) {
+    if (size == 0.0) {
+      return FontSize.smaller;
+    }
+    if (size == 1.0) {
+      return FontSize.small;
+    }
+    if (size == 2.0) {
+      return FontSize.medium;
+    }
+    if (size == 3.0) {
+      return FontSize.large;
+    }
+    if (size == 4.0) {
+      return FontSize.larger;
+    }
+    if (size == 5.0) {
+      return FontSize.xLarge;
+    }
+    return FontSize.medium;
+  }
+
   updateCardStatus(bool status) async {
     await FirebaseFirestore.instance
         .collection('UserCardsProgress')
@@ -427,7 +481,7 @@ class _CardTileState extends State<CardTile> {
   Widget build(BuildContext context) {
     final htmlData = widget.cardModel.cardContent;
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(5.0),
       child: Card(
         shadowColor: widget.isDarkMode ? Colors.white : Colors.black,
         elevation: 5,
@@ -437,36 +491,33 @@ class _CardTileState extends State<CardTile> {
             color: widget.isDarkMode ? Colors.grey[900] : Colors.grey[100],
             borderRadius: BorderRadius.circular(20),
           ),
-          height: 380,
           child: Padding(
-            padding: const EdgeInsets.only(top: 10.0, left: 10, right: 10),
+            padding: const EdgeInsets.only(top: 10.0, left: 5, right: 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 10,
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Scrollbar(
-                      child: ListView(
-                        children: [
-                          Html(
-                            data: htmlData,
-                            onLinkTap: (url) {
-                              print("Opening $url...");
-                            },
-                            onImageTap: (src) {
-                              print(src);
-                            },
-                            onImageError: (exception, stackTrace) {
-                              print(exception);
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Html(
+                    data: htmlData,
+                    onImageError: (exception, stackTrace) {
+                      print(exception);
+                    },
+                    style: {
+                      'body': Style(
+                          color:
+                              widget.isDarkMode ? Colors.white : Colors.black,
+                          fontSize: getFontSize(widget.fontSize)),
+                    },
+                    onLinkTap: (url, _, __, ___) {
+                      print("Opening $url...");
+                    },
+                    onImageTap: (src, _, __, ___) {
+                      print(src);
+                    },
                   ),
                 ),
                 Row(
@@ -491,7 +542,7 @@ class _CardTileState extends State<CardTile> {
                           Text(
                             'Done This Cards',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 8,
                               color: widget.isDarkMode
                                   ? Colors.white
                                   : Colors.black,

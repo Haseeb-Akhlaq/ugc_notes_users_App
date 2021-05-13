@@ -20,6 +20,13 @@ class _HomeScreenState extends State<HomeScreen> {
   List<CourseModel> allEnrolledCoursed = [];
   bool isLoading = false;
 
+  String getExamDate(String date) {
+    final examDate = DateTime.parse(date);
+    String examsLeftDays =
+        examDate.difference(DateTime.now()).inDays.toString();
+    return examsLeftDays;
+  }
+
   getEnrolledCourses() async {
     setState(() {
       isLoading = true;
@@ -50,7 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
         enrolledCourse.coursePic = courseDetailsData.data()['coursePic'];
         enrolledCourse.courseId = courseDetailsData.data()['courseId'];
         enrolledCourse.courseName = courseDetailsData.data()['courseName'];
-        enrolledCourse.daysLeftToExams = courseDetailsData.data()['examIn'];
+        enrolledCourse.daysLeftToExams =
+            getExamDate(courseDetailsData.data()['examDate']);
 
         enrolledCourse.numberOfTopicsLeft =
             (int.parse(courseDetailsData.data()['totalTopics']) -

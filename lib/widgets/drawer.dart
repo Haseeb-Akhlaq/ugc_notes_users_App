@@ -183,9 +183,7 @@ class ScreenDrawer extends StatelessWidget {
               'Version number',
               style: TextStyle(fontSize: 16),
             ),
-            onTap: () {
-              screenProvider.changeScreenIndex(3);
-            },
+            onTap: () {},
           ),
           Divider(),
         ],

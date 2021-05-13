@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ugc_net_notes/models/questionModel.dart';
 import 'package:ugc_net_notes/models/userModel.dart';
+import 'package:ugc_net_notes/widgets/drawer.dart';
 
 class NotificationScreen extends StatefulWidget {
   @override
@@ -130,6 +131,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: ScreenDrawer(),
       appBar: AppBar(
         title: Text('Notifications'),
         centerTitle: true,
@@ -260,10 +262,10 @@ class _QuestionCardState extends State<QuestionCard> {
                   SizedBox(height: 5),
                   Html(
                     data: htmlData,
-                    onLinkTap: (url) {
+                    onLinkTap: (url, _, __, ___) {
                       print("Opening $url...");
                     },
-                    onImageTap: (src) {
+                    onImageTap: (src, _, __, ___) {
                       print(src);
                     },
                     onImageError: (exception, stackTrace) {
